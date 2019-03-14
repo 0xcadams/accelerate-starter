@@ -1,7 +1,6 @@
 {
   "name": "accelerate-starter",
   "description": "A starter to facilitate rapid and scalable development using NextJS, Feathers, and Typescript.",
-  "version": "0.0.0-development",
   "private": true,
   "homepage": "https://accelerate-starter.com",
   "repository": {
