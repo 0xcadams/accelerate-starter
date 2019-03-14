@@ -17,7 +17,7 @@ jobs:
 stages:
   - test
   - name: release
-    if: branch = master AND type = push AND fork = false
+    if: branch = master
 
 branches:
   except:
