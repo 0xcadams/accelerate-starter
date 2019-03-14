@@ -8,15 +8,15 @@
     "JWT_AUDIENCE": "https://accelerate-starter.com"
   },
   "routes": [
-    { "src": "/socket.io/(.*)", "dest": "api/src/app.ts" },
-    { "src": "/api/(.*)", "dest": "api/src/app.ts" },
+    { "src": "/socket.io/(.*)", "dest": "packages/api/src/app.ts" },
+    { "src": "/api/(.*)", "dest": "packages/api/src/app.ts" },
     { "src": "/(.*)", "dest": "/web/$1" }
   ],
   "builds": [
     {
-      "src": "api/src/app.ts",
+      "src": "packages/api/src/app.ts",
       "use": "@now/node@canary"
     },
-    { "src": "web/next.config.js", "use": "@now/next" }
+    { "src": "packages/web/next.config.js", "use": "@now/next" }
   ]
 }

@@ -12,12 +12,12 @@ jobs:
       language: node_js
       node_js: '8.10.0'
       script:
-        - yarn release
+        - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then yarn release; fi'
 
 stages:
   - test
   - name: release
-    if: branch = master AND type = push AND fork = false
+    if: branch = master
 
 branches:
   except:
