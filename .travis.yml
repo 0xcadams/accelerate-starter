@@ -1,0 +1,28 @@
+jobs:
+  include:
+    - stage: test
+      language: node_js
+      node_js: '8.10.0'
+      script:
+        - yarn install --audit
+        - lerna run test
+        - lerna run build
+
+    - stage: release
+      language: node_js
+      node_js: '8.10.0'
+      script:
+        - yarn release
+
+stages:
+  - test
+  - name: release
+    if: branch = master AND type = push AND fork = false
+
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
+
+cache:
+  directories:
+    - web/.next

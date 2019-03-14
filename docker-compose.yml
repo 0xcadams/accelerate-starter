@@ -1,0 +1,40 @@
+version: "2.4"
+
+x-healthcheck-timing: &healthcheck-timing
+  interval: 5s
+  retries: 30
+
+x-env: &env
+  NODE_OPTIONS: --max-old-space-size=400
+
+services:
+
+  web:
+    build:
+      context: web/
+    ports:
+      - '3000:3000'
+    environment:
+      <<: *env
+      PORT: 3000
+
+  api:
+    build:
+      context: api/
+    ports:
+      - '3030:3030'
+    environment:
+      <<: *env
+      PORT: 3030
+      MONGODB_URL: mongodb://mongo:27017/accelerate-starter
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:27017"]
+      <<: *healthcheck-timing

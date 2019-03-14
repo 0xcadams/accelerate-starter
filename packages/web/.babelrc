@@ -1,0 +1,21 @@
+{
+  "presets": ["next/babel", "@zeit/next-typescript/babel"],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "@Actions": "./src/Actions",
+          "@Api": "./src/Api",
+          "@Components": "./src/Components",
+          "@Config": "./src/Config",
+          "@Models": "./src/Models",
+          "@Reducers": "./src/Reducers",
+          "@Redux": "./src/Redux",
+          "@Sagas": "./src/Sagas"
+        }
+      }
+    ]
+  ]
+}

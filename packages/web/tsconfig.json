@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "outDir": "./out/",
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "jsx": "preserve",
+    "lib": ["dom", "es2017"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "preserveConstEnums": true,
+    "removeComments": false,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "esnext",
+    "paths": {
+      "@Actions": ["./src/Actions"],
+      "@Actions/*": ["./src/Actions/*"],
+      "@Api": ["./src/Api"],
+      "@Api/*": ["./src/Api/*"],
+      "@Components/*": ["./src/Components/*"],
+      "@Components": ["./src/Components"],
+      "@Config": ["./src/Config"],
+      "@Models": ["./src/Models"],
+      "@Models/*": ["./src/Models/*"],
+      "@Reducers": ["./src/Reducers"],
+      "@Reducers/*": ["./src/Reducers/*"],
+      "@Redux": ["./src/Redux"],
+      "@Redux/*": ["./src/Redux/*"],
+      "@Sagas": ["./src/Sagas"],
+      "@Sagas/*": ["./src/Sagas/*"]
+    }
+  }
+}

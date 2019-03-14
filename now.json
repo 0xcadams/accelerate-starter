@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "name": "accelerate-starter",
+  "alias": ["accelerate-starter.com"],
+  "env": {
+    "MONGODB_URL": "@mongodb-url-prod",
+    "AUTH_SECRET": "@authentication-secret-prod",
+    "JWT_AUDIENCE": "https://accelerate-starter.com"
+  },
+  "routes": [
+    { "src": "/socket.io/(.*)", "dest": "api/src/app.ts" },
+    { "src": "/api/(.*)", "dest": "api/src/app.ts" },
+    { "src": "/(.*)", "dest": "/web/$1" }
+  ],
+  "builds": [
+    {
+      "src": "api/src/app.ts",
+      "use": "@now/node@canary"
+    },
+    { "src": "web/next.config.js", "use": "@now/next" }
+  ]
+}
