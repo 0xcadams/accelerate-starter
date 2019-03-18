@@ -12,7 +12,7 @@ export default class AboutPage extends React.Component<{}, {}> {
                 About
               </Header>
               <p>
-                This is a project to help a team quickly jump past common
+                This is a project to help teams quickly jump past common
                 hurdles, such as login/sign-up pages, and begin solving their
                 core business issues.
               </p>

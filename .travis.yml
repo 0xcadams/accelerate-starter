@@ -5,19 +5,11 @@ jobs:
       node_js: '8.10.0'
       script:
         - yarn install --audit
-        - lerna run test
-        - lerna run build
-
-    - stage: release
-      language: node_js
-      node_js: '8.10.0'
-      script:
-        - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then yarn release; fi'
+        - yarn test
+        - yarn build
 
 stages:
   - test
-  - name: release
-    if: branch = master
 
 branches:
   except:
