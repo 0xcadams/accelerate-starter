@@ -10,7 +10,7 @@
   "routes": [
     { "src": "/socket.io/(.*)", "dest": "packages/api/src/app.ts" },
     { "src": "/api/(.*)", "dest": "packages/api/src/app.ts" },
-    { "src": "/(.*)", "dest": "/web/$1" }
+    { "src": "/(.*)", "dest": "/packages/web/$1" }
   ],
   "builds": [
     {

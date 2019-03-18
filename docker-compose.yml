@@ -11,7 +11,7 @@ services:
 
   web:
     build:
-      context: web/
+      context: packages/web/
     ports:
       - '3000:3000'
     environment:
@@ -20,7 +20,7 @@ services:
 
   api:
     build:
-      context: api/
+      context: packages/api/
     ports:
       - '3030:3030'
     environment:
