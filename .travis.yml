@@ -5,8 +5,8 @@ jobs:
       node_js: '8.10.0'
       script:
         - yarn install --audit
-        - lerna run test
-        - lerna run build
+        - yarn test
+        - yarn build
 
     - stage: release
       language: node_js

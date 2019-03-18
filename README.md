@@ -7,15 +7,33 @@
     Accelerate is a starter project to enable a team to quickly jump past common hurdles, such as login/sign-up pages, and begin solving their core business issues.
   </div>
   <br />
-  
-  [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
+[![Build Status](https://travis-ci.com/chase-adams/accelerate-starter.svg?branch=master)](https://travis-ci.com/chase-adams/accelerate-starter)
+[![Uptime Robot](https://img.shields.io/uptimerobot/ratio/m782175114-036d055bce99279de3d423f5.svg)](https://stats.uptimerobot.com/49G0WUOLW)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
 </div>
 
 ## Getting Started
 
+First, start the MongoDB database using [Docker](https://www.docker.com/).
+
+```
+docker run --name accelerate-mongo -d -p 27017:27017 -v /tmp/mongodata:/data/db mongo
+```
+
+Then, bring up both the web app and API by running:
+
+```bash
+yarn install
+yarn start
+```
+
+This will use [lerna](https://github.com/lerna/lerna) to start each service in the `packages/` folder.
+
 ### Web
 
-You can start the web by running:
+Start the web app individually by running:
 
 ```bash
 cd web/
@@ -27,7 +45,7 @@ The web interface is built on NextJS. To learn more about it, visit [nextjs.org]
 
 ### API
 
-You can start the API by running:
+Similarly, start the API individually by running:
 
 ```bash
 cd api/
