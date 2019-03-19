@@ -9,7 +9,7 @@
     "cypress:open": "cypress open",
     "export": "NODE_ENV=production next export",
     "format": "prettier --write --single-quote --trailing-comma es5",
-    "lint": "tslint -c ../../tslint.json 'src/**/*.ts?(x)' 'pages/**/*.ts?(x)'",
+    "lint": "tslint -c ../tslint.json 'src/**/*.ts?(x)' 'pages/**/*.ts?(x)'",
     "serve": "NODE_ENV=production node ./app/server.js",
     "start": "PROXY_MODE=local nodemon --watch app --watch app/server.js",
     "test": "yarn lint",
