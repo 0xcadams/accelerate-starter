@@ -11,7 +11,7 @@
   "scripts": {
     "build": "babel src --out-dir out --extensions \".ts\"",
     "jest": "jest ts-node/register test/*.ts test/**/*.ts",
-    "lint": "tslint -c ../../tslint.json 'src/**/*.ts' 'test/*.ts' 'test/**/*.ts'",
+    "lint": "tslint -c ../tslint.json 'src/**/*.ts' 'test/*.ts' 'test/**/*.ts'",
     "serve": "node out/index.js",
     "start": "nodemon --exec \"babel-node --extensions '.ts,.tsx' src/index.ts\"",
     "test": "yarn lint && yarn jest",
