@@ -24,6 +24,7 @@
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "@zeit/next-typescript": "^1.1.1",
+    "chance": "^1.0.18",
     "email-validator": "^2.0.4",
     "encoding": "^0.1.12",
     "http-proxy-middleware": "^0.19.1",
@@ -47,6 +48,7 @@
     "typesafe-actions": "^3.1.0"
   },
   "devDependencies": {
+    "@types/chance": "^1.0.1",
     "@types/enzyme": "^3.1.18",
     "@types/feathersjs__authentication-client": "^1.0.4",
     "@types/feathersjs__feathers": "^3.1.1",
@@ -55,7 +57,7 @@
     "@types/jest": "^24.0.6",
     "@types/next": "^7.0.5",
     "@types/next-redux-wrapper": "^2.0.2",
-    "@types/react": "^16.7.17",
+    "@types/react": "^16.8.8",
     "@types/react-redux": "^6.0.11",
     "@types/semantic-ui": "^2.2.6",
     "autoprefixer": "^9.4.3",

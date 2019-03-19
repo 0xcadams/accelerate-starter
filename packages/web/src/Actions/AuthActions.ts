@@ -1,6 +1,7 @@
 import { createAsyncAction, createStandardAction } from 'typesafe-actions';
 
 import { IUser } from '@Models/User';
+import { FeathersError } from '@feathersjs/errors';
 
 /*
  * TOGGLE AUTH MODAL
@@ -23,18 +24,7 @@ export const createUser = createAsyncAction(
   'auth/CREATE_REQUEST',
   'auth/CREATE_SUCCESS',
   'auth/CREATE_FAILURE'
-)<IUser, IUser, Error>();
-
-// export const createUser = (user: IUser): IFeathersAction<IUser, IUser> => {
-//   return {
-//     types: createUserTypes,
-//     callApi: async dispatch => {
-//       const response = await api.createUser(user);
-//       dispatch(toggleAuthModal({ showModal: false }));
-//       return response;
-//     }
-//   };
-// };
+)<IUser, IUser, FeathersError>();
 
 /*
  * AUTHENTICATE USER
@@ -44,10 +34,10 @@ export const authenticateUser = createAsyncAction(
   'auth/AUTHENTICATE_REQUEST',
   'auth/AUTHENTICATE_SUCCESS',
   'auth/AUTHENTICATE_FAILURE'
-)<IUser, IUser, Error>();
+)<IUser, IUser, FeathersError>();
 
 export const logOutUser = createAsyncAction(
   'auth/LOG_OUT_REQUEST',
   'auth/LOG_OUT_SUCCESS',
   'auth/LOG_OUT_FAILURE'
-)<void, void, Error>();
+)<void, void, FeathersError>();

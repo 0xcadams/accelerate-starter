@@ -1,13 +1,6 @@
 import * as AuthActions from '@Actions/AuthActions';
 import * as api from '@Api';
-import {
-  all,
-  call,
-  fork,
-  put,
-  take,
-  takeEvery
-} from 'redux-saga/effects';
+import { all, call, fork, put, take, takeEvery } from 'redux-saga/effects';
 
 import { IUser } from '@Models/User';
 
@@ -15,6 +8,7 @@ export function* createUser(user: IUser) {
   try {
     const response = yield call(api.createUser, user);
     yield put(AuthActions.authenticateUser.success(response));
+    yield call(toggleAuthModal, { showModal: false });
   } catch (error) {
     yield put(AuthActions.authenticateUser.failure(error));
   }
@@ -24,6 +18,7 @@ export function* authenticateUser(user?: IUser) {
   try {
     const response = yield call(api.authenticateUser, user);
     yield put(AuthActions.authenticateUser.success(response));
+    yield call(toggleAuthModal, { showModal: false });
   } catch (error) {
     yield put(AuthActions.authenticateUser.failure(error));
   }
@@ -51,7 +46,6 @@ export function* watchCreateUser() {
     const request = yield take(AuthActions.createUser.request);
     if (request) {
       yield call(createUser, request.payload);
-      yield call(toggleAuthModal, { showModal: false });
     }
   }
 }
@@ -67,7 +61,6 @@ export function* watchLogIn() {
     const tokenResponse = yield take(AuthActions.authenticateUser.request);
     if (tokenResponse) {
       yield call(authenticateUser, tokenResponse.payload);
-      yield call(toggleAuthModal, { showModal: false });
     }
   }
 }

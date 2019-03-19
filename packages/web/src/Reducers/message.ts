@@ -3,12 +3,13 @@ import { ActionType, getType } from 'typesafe-actions';
 
 import * as actions from '@Actions/MessageActions';
 import { IMessage } from '@Models/Message';
+import { FeathersError } from '@feathersjs/errors';
 
 /**
  * INITIAL_STATE
  */
 interface IState {
-  readonly error?: Error;
+  readonly error?: FeathersError;
   readonly isFetching: boolean;
   readonly lastUpdated: number;
   readonly messages: IMessage[];
