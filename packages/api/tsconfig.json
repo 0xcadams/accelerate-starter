@@ -11,9 +11,6 @@
     "inlineSourceMap": false,
     "inlineSources": false,
     "moduleResolution": "node"
-    // "paths": {
-    //   "@Models/*": ["./src/models/*"]
-    // }
   },
   "exclude": ["node_modules", "out"]
 }
