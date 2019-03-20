@@ -1,4 +1,5 @@
 import * as MessageActions from '@Actions/MessageActions';
+import * as AuthActions from '@Actions/AuthActions';
 import * as api from '@Api';
 import { IMessage } from '@Models/Message';
 import { all, call, fork, put, take, takeLatest } from 'redux-saga/effects';
@@ -37,6 +38,20 @@ export function* watchCreateMessage() {
   }
 }
 
+export function* watchAuthGetAllMessages() {
+  while (true) {
+    yield take([
+      AuthActions.authenticateUser.success,
+      AuthActions.logOutUser.success
+    ]);
+    yield put(MessageActions.getMessages.request());
+  }
+}
+
 export default function* root() {
-  yield all([fork(watchCreateMessage), fork(watchGetAllMessages)]);
+  yield all([
+    fork(watchCreateMessage),
+    fork(watchGetAllMessages),
+    fork(watchAuthGetAllMessages)
+  ]);
 }

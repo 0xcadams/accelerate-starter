@@ -1,9 +1,10 @@
 import * as React from 'react';
+import { expect } from 'chai';
 import { shallow } from 'enzyme';
 
-import { Segment } from 'semantic-ui-react';
+import { Segment, Placeholder } from 'semantic-ui-react';
 
-import { Messages } from './../index';
+import { Messages } from '.';
 
 const loadingState = {
   lastUpdated: 0,
@@ -23,13 +24,13 @@ const loadedState = {
 
 describe('<Messages />', () => {
   it('renders the segment as loading', () => {
-    const login = shallow(<Messages { ...loadingState } />);
-    expect(login.find(Segment).prop('loading')).equals(true);
+    const login = shallow(<Messages {...loadingState} />);
+    expect(login.find(Placeholder).exists()).to.equal(true);
   });
 
   it('renders the messages', () => {
-    const login = shallow(<Messages { ...loadedState } />);
+    const login = shallow(<Messages {...loadedState} />);
     expect(login.find(Segment).every(e => e.prop('loading') === false));
-    expect(login.find(Segment)).length(3);
+    expect(login.find(Segment).length).to.equal(3);
   });
 });

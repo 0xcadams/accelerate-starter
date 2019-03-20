@@ -2,12 +2,13 @@ import { ActionType, getType, StateType } from 'typesafe-actions';
 
 import * as actions from '@Actions/AuthActions';
 import { IUser } from '@Models/User';
+import { FeathersError } from '@feathersjs/errors';
 
 /**
  * INITIAL_STATE
  */
 interface IState {
-  readonly error?: Error;
+  readonly error?: FeathersError;
   readonly isFetching: boolean;
   readonly isModalShowing: boolean;
   readonly isSignUp: boolean;
@@ -34,6 +35,7 @@ export const AuthReducer = (
     case getType(actions.toggleAuthModal):
       return {
         ...state,
+        error: action.payload.showModal ? undefined : state.error, // clear errors when the auth modal is being shown
         isModalShowing: action.payload.showModal,
         isSignUp:
           action.payload.isSignUp !== undefined

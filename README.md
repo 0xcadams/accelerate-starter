@@ -1,7 +1,7 @@
 <div align="center">
-  <img src="packages/web/static/accelerate-starter.png" width="280" title="Accelerate Starter">
+  <img src="packages/web/static/accelerate-starter.png" width="200" title="Accelerate Starter">
   <h3>
-    A starter to facilitate rapid and scalable development using NextJS, Feathers, and Typescript (Under Active Development...)
+    A starter to facilitate rapid and scalable development using NextJS, Feathers, and Typescript (Under active development...)
   </h3>
   <div>
     Accelerate is a starter project to enable a team to quickly jump past common hurdles, such as login/sign-up pages, and begin solving their core business issues.
@@ -19,7 +19,7 @@
 First, start the MongoDB database using [Docker](https://www.docker.com/).
 
 ```
-docker run --name accelerate-mongo -d -p 27017:27017 -v /tmp/mongodata:/data/db mongo
+docker run --name accelerate-mongo -d -p 27017:27017 mongo
 ```
 
 Then, bring up both the web app and API by running:
@@ -33,7 +33,7 @@ This will use [lerna](https://github.com/lerna/lerna) to start each service in t
 
 ### Web
 
-Start the web app individually by running:
+Also, one can start the web app individually by running:
 
 ```bash
 cd web/
