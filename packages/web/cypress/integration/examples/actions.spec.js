@@ -1,15 +1,19 @@
 /// <reference types="Cypress" />
 
-import { checkPropTypes } from 'prop-types';
-
 context('Actions', () => {
   beforeEach(() => {
     cy.visit('/');
 
-    // cy.request('POST', '/api/authentication', {
-    //   email: 'jane.lane@gmail.com',
-    //   password: 'test123'
-    // });
+    cy.request({
+      method: 'POST',
+      url: '/api/v1/user',
+      body: {
+        name: 'Jane Lane',
+        email: 'jane.lane@gmail.com',
+        password: 'test123'
+      },
+      failOnStatusCode: false
+    });
   });
 
   it('.click() - click on a DOM element', function() {

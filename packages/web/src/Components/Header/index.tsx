@@ -85,6 +85,7 @@ const Header: React.FC<IProps> = ({
               </React.Fragment>
             ) : (
               <Dropdown
+                id="user-avatar-btn"
                 loading={isFetching}
                 icon="user"
                 pointing="top right"
