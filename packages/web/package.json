@@ -6,7 +6,6 @@
   "scripts": {
     "analyze": "BUNDLE_ANALYZE=both npm run build",
     "build": "NODE_ENV=production next build",
-    "cypress:open": "cypress open",
     "export": "NODE_ENV=production next export",
     "format": "prettier --write --single-quote --trailing-comma es5",
     "lint": "tslint -c ../../tslint.json 'src/**/*.ts?(x)' 'pages/**/*.ts?(x)'",
@@ -14,7 +13,8 @@
     "serve": "NODE_ENV=production node ./app/server.js",
     "start": "PROXY_MODE=local nodemon --watch app --watch app/server.js",
     "test": "yarn lint && yarn mocha",
-    "test:integration": "cypress run"
+    "test:integration": "cypress run",
+    "test:integration:open": "cypress open"
   },
   "dependencies": {
     "@feathersjs/authentication-client": "^1.0.11",
@@ -66,7 +66,7 @@
     "autoprefixer": "^9.4.3",
     "babel-plugin-module-resolver": "^3.2.0",
     "chai": "^4.2.0",
-    "cypress": "^3.1.5",
+    "cypress": "3.1.5",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.9.1",
     "file-loader": "^3.0.1",

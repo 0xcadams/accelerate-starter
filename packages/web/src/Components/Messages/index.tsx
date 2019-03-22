@@ -22,16 +22,16 @@ export const Messages: React.FC<IMessageState> = ({
           </Placeholder>
         </Segment>
       ) : error ? (
-        <Message warning attached="bottom">
+        <Message id="unauthorized-warning-msg" warning attached="bottom">
           {error.code === 401
             ? 'You must log in to create and view messages.'
             : 'Please wait a few seconds and refresh your page.'}
         </Message>
       ) : messages.length <= 0 ? (
-        <Segment>No messages.</Segment>
+        <Message id="no-messages-warning-msg" >No messages.</Message>
       ) : (
         messages.map((message: IMessage) => (
-          <Segment key={message._id}>{message.body}</Segment>
+          <Segment className="message-sgmt" key={message._id}>{message.body}</Segment>
         ))
       )}
     </Segment.Group>

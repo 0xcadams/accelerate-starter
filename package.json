@@ -24,7 +24,9 @@
     "build": "lerna run build --stream",
     "commit": "git-cz",
     "start": "lerna run start --stream",
-    "test": "lerna run test --stream"
+    "test": "lerna run test --stream",
+    "test:integration": "lerna run test:integration --stream",
+    "test:integration:open": "lerna run test:integration:open --stream"
   },
   "workspaces": [
     "packages/*"
@@ -39,7 +41,8 @@
     "@commitlint/config-conventional": "^7.5.0",
     "cz-conventional-changelog": "2.1.0",
     "husky": "^1.3.1",
-    "lerna": "3.13.1"
+    "lerna": "3.13.1",
+    "now": "^14.2.2"
   },
   "config": {
     "commitizen": {

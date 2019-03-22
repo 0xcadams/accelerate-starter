@@ -85,6 +85,7 @@ const Header: React.FC<IProps> = ({
               </React.Fragment>
             ) : (
               <Dropdown
+                id="user-avatar-btn"
                 loading={isFetching}
                 icon="user"
                 pointing="top right"
@@ -95,8 +96,8 @@ const Header: React.FC<IProps> = ({
                 <Dropdown.Menu>
                   <Dropdown.Header content={user.email} />
                   <Dropdown.Divider />
-                  <Dropdown.Item>Account</Dropdown.Item>
-                  <Dropdown.Item onClick={() => logOutUser()}>
+                  <Dropdown.Item id="account-btn">Account</Dropdown.Item>
+                  <Dropdown.Item id="sign-out-btn" onClick={() => logOutUser()}>
                     Sign Out
                   </Dropdown.Item>
                 </Dropdown.Menu>

@@ -7,6 +7,8 @@ jobs:
         - yarn install --audit
         - yarn test
         - yarn build
+        - export CYPRESS_BASE_URL=$(now -t $NOW_TOKEN)
+        - yarn test:integration
 
 stages:
   - test
