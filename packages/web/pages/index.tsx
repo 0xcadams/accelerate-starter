@@ -13,7 +13,10 @@ const mapDispatchToProps = {
   getMessages: MessageActions.getMessages.request
 };
 
-export const HomePage: React.FC<typeof mapDispatchToProps> = ({ getMessages, createMessage }) => {
+export const HomePage: React.FC<typeof mapDispatchToProps> = ({
+  getMessages,
+  createMessage
+}) => {
   React.useEffect(() => {
     getMessages();
   });
@@ -35,12 +38,17 @@ export const HomePage: React.FC<typeof mapDispatchToProps> = ({ getMessages, cre
         <Grid.Row>
           <Grid.Column textAlign="center">
             <Button
+              id="add-message-btn"
               onClick={() => createMessage({ body: chance.sentence() })}
               size="huge"
             >
               Add a Message
             </Button>
-            <Button onClick={() => getMessages()} size="huge">
+            <Button
+              id="get-messages-btn"
+              onClick={() => getMessages()}
+              size="huge"
+            >
               Get Messages
             </Button>
           </Grid.Column>

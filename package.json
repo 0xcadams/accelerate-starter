@@ -25,7 +25,8 @@
     "commit": "git-cz",
     "start": "lerna run start --stream",
     "test": "lerna run test --stream",
-    "test:integration": "lerna run test:integration --stream"
+    "test:integration": "lerna run test:integration --stream",
+    "test:integration:open": "lerna run test:integration:open --stream"
   },
   "workspaces": [
     "packages/*"
