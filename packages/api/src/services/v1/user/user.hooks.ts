@@ -1,10 +1,12 @@
 import { hooks as authHooks } from '@feathersjs/authentication';
 import { hooks as localHooks } from '@feathersjs/authentication-local';
 
+import { gravatar } from './hooks/gravatar';
+
 const hooks = {
   before: {
     all: [],
-    create: [localHooks.hashPassword()],
+    create: [localHooks.hashPassword(), gravatar()],
     find: [authHooks.authenticate('jwt')],
     get: [authHooks.authenticate('jwt')],
     patch: [localHooks.hashPassword(), authHooks.authenticate('jwt')],

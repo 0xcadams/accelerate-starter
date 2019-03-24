@@ -1,6 +1,6 @@
 import { createAsyncAction, createStandardAction } from 'typesafe-actions';
 
-import { IUser } from '@Models/User';
+import { IUser } from '@accelerate-starter/core';
 import { FeathersError } from '@feathersjs/errors';
 
 /*

@@ -1,8 +1,8 @@
 import { Paginated } from '@feathersjs/feathers';
 import { ActionType, getType } from 'typesafe-actions';
 
+import { IMessage } from '@accelerate-starter/core';
 import * as actions from '@Actions/MessageActions';
-import { IMessage } from '@Models/Message';
 import { FeathersError } from '@feathersjs/errors';
 
 /**
@@ -42,7 +42,7 @@ const getMessages = (
 };
 
 const addNewMessage = (state: IState, message: IMessage) =>
-  state.messages.some(msg => msg._id === message._id)
+  state.messages.some((msg) => msg._id === message._id)
     ? state.messages
     : [...(state && state.messages), message];
 

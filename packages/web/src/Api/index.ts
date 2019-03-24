@@ -1,22 +1,25 @@
 import feathers, { Paginated, Service } from '@feathersjs/feathers';
 
 import authenticationClient from '@feathersjs/authentication-client';
-// import { default as socketio } from '@feathersjs/socketio-client';
 import restClient from '@feathersjs/rest-client';
+import { default as socketio } from '@feathersjs/socketio-client';
 
 import isomorphicUnfetch from 'isomorphic-unfetch';
 import socketIoClient from 'socket.io-client';
 
-import { IMessage } from '@Models/Message';
-import { IUser } from '@Models/User';
+import { config as globalConfig } from '@accelerate-starter/core';
+import { IMessage, IUser } from '@accelerate-starter/core';
 
 const app = feathers();
 
-// const socket = socketIoClient('/');
-// app.configure(socketio(socket));
-
+const socket = socketIoClient('/');
 const rest = restClient('/api');
-app.configure(rest.fetch(isomorphicUnfetch));
+
+if (globalConfig.useSocketIo) {
+  app.configure(socketio(socket));
+} else {
+  app.configure(rest.fetch(isomorphicUnfetch));
+}
 
 app.configure(
   authenticationClient({
@@ -34,7 +37,7 @@ const servicePaths = {
 
 const devWait = async (): Promise<boolean> => {
   if (process.env.NODE_ENV === 'development') {
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
   }
 
   return true;
@@ -90,6 +93,9 @@ export const createMessage = async (message: IMessage): Promise<IMessage> =>
 
 export const getAllMessages = async (): Promise<
   IMessage | IMessage[] | Paginated<IMessage>
-> => messageService.find();
+> =>
+  messageService.find({
+    query: { $populate: 'owner' }
+  });
 
 export { app };

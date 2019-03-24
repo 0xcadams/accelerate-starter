@@ -1,9 +1,10 @@
-import { default as App, AppComponentContext, Container } from 'next/app';
+import { AppComponentContext, Container, default as App } from 'next/app';
 import { default as Head } from 'next/head';
 import * as React from 'react';
 
 import nextReduxWrapper from 'next-redux-wrapper';
 import { Provider } from 'react-redux';
+import { Store } from 'redux';
 
 import mobileDetect from 'mobile-detect';
 import { Responsive } from 'semantic-ui-react';
@@ -24,7 +25,7 @@ const getWidthFactory = (isMobileFromSSR: boolean) => (): number => {
 
 interface IProps extends React.Props<{}> {
   isMobileFromSSR: boolean;
-  store: any;
+  store: Store;
 }
 
 class GlobalApp extends App<IProps> {

@@ -2,7 +2,7 @@ import * as AuthActions from '@Actions/AuthActions';
 import * as api from '@Api';
 import { all, call, fork, put, take, takeEvery } from 'redux-saga/effects';
 
-import { IUser } from '@Models/User';
+import { IUser } from '@accelerate-starter/core';
 
 export function* createUser(user: IUser) {
   try {

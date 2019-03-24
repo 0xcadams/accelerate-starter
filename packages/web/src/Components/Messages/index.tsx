@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Segment, Placeholder, Message } from 'semantic-ui-react';
+import { Item, Message, Placeholder, Segment } from 'semantic-ui-react';
 
-import { IMessage } from '@Models/Message';
+import { IMessage } from '@accelerate-starter/core';
 import { IMessageState, IStore } from '@Reducers';
 
 export const Messages: React.FC<IMessageState> = ({
@@ -28,11 +28,24 @@ export const Messages: React.FC<IMessageState> = ({
             : 'Please wait a few seconds and refresh your page.'}
         </Message>
       ) : messages.length <= 0 ? (
-        <Message id="no-messages-warning-msg" >No messages.</Message>
+        <Message id="no-messages-warning-msg">No messages.</Message>
       ) : (
-        messages.map((message: IMessage) => (
-          <Segment className="message-sgmt" key={message._id}>{message.body}</Segment>
-        ))
+        <Segment padded>
+          <Item.Group divided>
+            {messages.map((message: IMessage) => (
+              <Item key={message._id}>
+                <Item.Image
+                  size="tiny"
+                  src={message.owner && message.owner.avatar}
+                />
+                <Item.Content verticalAlign="middle">
+                  <Item.Header>{message.owner.name}</Item.Header>
+                  <Item.Description>{message.body}</Item.Description>
+                </Item.Content>
+              </Item>
+            ))}
+          </Item.Group>
+        </Segment>
       )}
     </Segment.Group>
   </div>

@@ -10,7 +10,6 @@
           "@Api": "./src/Api",
           "@Components": "./src/Components",
           "@Config": "./src/Config",
-          "@Models": "./src/Models",
           "@Reducers": "./src/Reducers",
           "@Redux": "./src/Redux",
           "@Sagas": "./src/Sagas"

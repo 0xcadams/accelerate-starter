@@ -1,6 +1,6 @@
 import { Application } from '@feathersjs/express';
 
-export const config = (app: Application<any>) => {
+export const config = (app: Application<string>) => {
   const isProd = process.env.NODE_ENV === 'production';
 
   const conf = {

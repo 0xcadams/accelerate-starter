@@ -1,6 +1,6 @@
 // Initializes the `message` service on path `/v1/message`
-import { createModel } from '../../../models/v1/message.model';
 import { default as createService } from 'feathers-mongoose';
+import { createModel } from '../../../models/v1/message.model';
 import { hooks } from './message.hooks';
 
 const message = (app) => {
@@ -9,7 +9,8 @@ const message = (app) => {
 
   const options = {
     Model,
-    paginate
+    paginate,
+    whitelist: ['$populate']
   };
 
   // Initialize our service with any options it requires

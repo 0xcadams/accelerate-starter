@@ -1,30 +1,9 @@
 {
+  "extends": "../tsconfig.settings.json",
   "compilerOptions": {
-    "outDir": "./out/",
-    "allowSyntheticDefaultImports": true,
-    "allowJs": false,
-    "checkJs": false,
-    "declaration": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true,
-    "importHelpers": true,
-    "noEmitHelpers": true,
+    "outDir": "out",
     "jsx": "react",
-    "lib": ["es2017"],
-    "target": "esnext",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "noEmitOnError": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noUnusedLocals": true,
-    "strictNullChecks": true,
-    "pretty": true,
-    "removeComments": true,
-    "sourceMap": true,
+    "lib": ["es2017", "dom"],
     "baseUrl": ".",
     "paths": {
       "@Actions": ["./src/Actions"],
@@ -34,8 +13,6 @@
       "@Components/*": ["./src/Components/*"],
       "@Components": ["./src/Components"],
       "@Config": ["./src/Config"],
-      "@Models": ["./src/Models"],
-      "@Models/*": ["./src/Models/*"],
       "@Reducers": ["./src/Reducers"],
       "@Reducers/*": ["./src/Reducers/*"],
       "@Redux": ["./src/Redux"],
@@ -43,5 +20,9 @@
       "@Sagas": ["./src/Sagas"],
       "@Sagas/*": ["./src/Sagas/*"]
     }
-  }
+  },
+  "compileOnSave": true,
+  "references": [
+    { "path": "../lib" }
+  ]
 }
