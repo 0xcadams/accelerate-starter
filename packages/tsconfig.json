@@ -1,4 +1,4 @@
 {
   "files": [],
-  "references": [{ "path": "api" }, { "path": "lib" }, { "path": "web" }]
+  "references": [{ "path": "api" }, { "path": "core" }, { "path": "web" }]
 }

@@ -1,7 +1,7 @@
 {
   "extends": "../tsconfig.settings.json",
   "compilerOptions": {
-    "outDir": "out",
+    "outDir": "./out",
     "jsx": "react",
     "lib": ["es2017", "dom"],
     "baseUrl": ".",
@@ -23,6 +23,6 @@
   },
   "compileOnSave": true,
   "references": [
-    { "path": "../lib" }
+    { "path": "../core" }
   ]
 }
