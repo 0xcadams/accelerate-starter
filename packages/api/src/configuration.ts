@@ -9,7 +9,7 @@ export const config = (app: Application<string>) => {
     authentication: {
       secret: process.env.AUTH_SECRET || '1d14ef126b73c46e07f',
       strategies: ['jwt', 'local'],
-      path: '/api/authentication',
+      path: '/authentication',
       service: 'v1/user',
       header: 'Authorization',
       jwt: {

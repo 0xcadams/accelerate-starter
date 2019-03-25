@@ -2,7 +2,6 @@
 // See https://github.com/winstonjs/winston for documentation
 // about the logger.
 import { HookContext } from '@feathersjs/feathers';
-import * as util from 'util';
 import { logger } from '../logger';
 
 // To see more detailed messages, uncomment the following line:

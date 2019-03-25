@@ -2,8 +2,8 @@
   "name": "@accelerate-starter/core",
   "version": "0.0.1",
   "description": "Library to share code between accelerate-starter applications.",
-  "main": "out/index.js",
-  "typings": "out/index.d.ts",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "scripts": {
     "build": "tsc -p ."
   },

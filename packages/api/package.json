@@ -4,16 +4,14 @@
   "description": "FeathersJS-based API for accelerate-starter.",
   "main": "src",
   "directories": {
-    "lib": "src",
-    "test": "test/",
-    "config": "config/"
+    "lib": "src"
   },
   "scripts": {
-    "build": "babel src --out-dir out --extensions \".ts\"",
+    "build": "tsc -p .",
     "lint": "tslint -c ../../tslint.json 'src/**/*.ts'",
     "mocha": "ts-mocha -p ./tsconfig.json src/**/*.test.ts",
-    "serve": "node out/index.js",
-    "start": "nodemon --exec \"babel-node --extensions '.ts' src/index.ts\"",
+    "serve": "node lib/index.js",
+    "start": "nodemon --exec \"ts-node src/index.ts\"",
     "test": "yarn lint && yarn mocha",
     "type-check": "tsc --noEmit"
   },

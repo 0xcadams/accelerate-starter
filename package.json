@@ -32,6 +32,7 @@
     "commit": "git-cz",
     "fix": "lerna run lint --stream -- --fix",
     "lint": "lerna run lint --stream",
+    "postinstall": "yarn build",
     "start": "lerna run start --stream",
     "test": "lerna run test --stream",
     "test:integration": "lerna run test:integration --stream",

@@ -19,7 +19,7 @@ describe("'populate-user' hook", () => {
 
     app = feathers();
 
-    // Register `users` and `messages` service in-memory
+    // Register `user` and `message` service in-memory
     app.use('/user', feathersMemory(options));
     app.use('/message', feathersMemory(options));
 

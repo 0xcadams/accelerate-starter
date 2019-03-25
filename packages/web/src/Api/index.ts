@@ -7,23 +7,25 @@ import { default as socketio } from '@feathersjs/socketio-client';
 import isomorphicUnfetch from 'isomorphic-unfetch';
 import socketIoClient from 'socket.io-client';
 
-import { config as globalConfig } from '@accelerate-starter/core';
-import { IMessage, IUser } from '@accelerate-starter/core';
+import {
+  config as globalConfig,
+  IMessage,
+  IUser
+} from '@accelerate-starter/core';
 
 const app = feathers();
 
-const socket = socketIoClient('/');
-const rest = restClient('/api');
-
 if (globalConfig.useSocketIo) {
+  const socket = socketIoClient('/');
   app.configure(socketio(socket));
 } else {
+  const rest = restClient('/api');
   app.configure(rest.fetch(isomorphicUnfetch));
 }
 
 app.configure(
   authenticationClient({
-    path: 'api/authentication',
+    path: 'authentication',
     service: 'v1/user',
     storage:
       typeof localStorage === 'undefined' ? undefined : window.localStorage
