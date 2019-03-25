@@ -28,12 +28,12 @@ context('Actions', () => {
 
       cy.get('#messages-sgmt-grp').should('exist');
 
-      cy.get('.message-sgmt').then(($prevGrp) => {
+      cy.get('.message-item').then(($prevGrp) => {
         const prevLength = $prevGrp.length;
 
         cy.get('#add-message-btn').click();
 
-        cy.get('.message-sgmt').should(($grp) => {
+        cy.get('.message-item').should(($grp) => {
           expect($grp.length).be.eq(prevLength + 1);
         });
       });

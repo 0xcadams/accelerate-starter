@@ -33,7 +33,7 @@ export const Messages: React.FC<IMessageState> = ({
         <Segment padded>
           <Item.Group divided>
             {messages.map((message: IMessage) => (
-              <Item key={message._id}>
+              <Item className="message-item" key={message._id}>
                 <Item.Image
                   size="tiny"
                   src={message.owner && message.owner.avatar}
