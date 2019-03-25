@@ -6,9 +6,10 @@
   "directories": {
     "lib": "src"
   },
+  "license": "MIT",
   "scripts": {
     "build": "tsc -p .",
-    "lint": "tslint -c ../../tslint.json 'src/**/*.ts'",
+    "lint": "tslint -p . -c ../../tslint.json 'src/**/*.ts'",
     "mocha": "ts-mocha -p ./tsconfig.json src/**/*.test.ts",
     "now-build": "lerna run build",
     "serve": "node lib/index.js",

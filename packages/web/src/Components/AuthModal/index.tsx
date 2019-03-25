@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+
+import * as emailValidator from 'email-validator';
 import {
   Button,
   Checkbox,
@@ -8,8 +10,6 @@ import {
   Message,
   Modal
 } from 'semantic-ui-react';
-
-import * as emailValidator from 'email-validator';
 
 import * as AuthActions from '@Actions/AuthActions';
 import { IAuthModalState, IStore } from '@Reducers';

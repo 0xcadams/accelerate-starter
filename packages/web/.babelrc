@@ -9,7 +9,6 @@
           "@Actions": "./src/Actions",
           "@Api": "./src/Api",
           "@Components": "./src/Components",
-          "@Config": "./src/Config",
           "@Reducers": "./src/Reducers",
           "@Redux": "./src/Redux",
           "@Sagas": "./src/Sagas"

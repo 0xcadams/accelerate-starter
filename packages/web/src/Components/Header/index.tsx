@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { default as Link } from 'next/link';
 import { SingletonRouter, withRouter } from 'next/router';
+
 import { Button, Container, Dropdown, Menu, Segment } from 'semantic-ui-react';
 
 import * as AuthActions from '@Actions/AuthActions';

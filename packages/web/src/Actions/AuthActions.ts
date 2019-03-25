@@ -1,7 +1,7 @@
+import { FeathersError } from '@feathersjs/errors';
 import { createAsyncAction, createStandardAction } from 'typesafe-actions';
 
 import { IUser } from '@accelerate-starter/core';
-import { FeathersError } from '@feathersjs/errors';
 
 /*
  * TOGGLE AUTH MODAL

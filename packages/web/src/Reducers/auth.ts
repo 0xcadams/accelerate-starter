@@ -1,4 +1,4 @@
-import { ActionType, getType, StateType } from 'typesafe-actions';
+import { ActionType, getType } from 'typesafe-actions';
 
 import { IUser } from '@accelerate-starter/core';
 import * as actions from '@Actions/AuthActions';
@@ -7,7 +7,7 @@ import { FeathersError } from '@feathersjs/errors';
 /**
  * INITIAL_STATE
  */
-interface IState {
+export interface IAuthModalState {
   readonly error?: FeathersError;
   readonly isFetching: boolean;
   readonly isModalShowing: boolean;
@@ -16,7 +16,7 @@ interface IState {
   readonly user?: IUser;
 }
 
-const INITIAL_STATE: IState = {
+const INITIAL_STATE: IAuthModalState = {
   error: undefined,
   isFetching: false,
   isModalShowing: false,
@@ -28,7 +28,7 @@ const INITIAL_STATE: IState = {
  * REDUCER
  */
 export const AuthReducer = (
-  state: IState = INITIAL_STATE,
+  state: IAuthModalState = INITIAL_STATE,
   action: ActionType<typeof actions>
 ) => {
   switch (action.type) {
@@ -107,5 +107,3 @@ export const AuthReducer = (
       return state;
   }
 };
-
-export type IAuthModalState = StateType<typeof AuthReducer>;

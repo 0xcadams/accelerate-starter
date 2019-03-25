@@ -2335,14 +2335,6 @@
     "@types/react" "*"
     redux "^4.0.0"
 
-"@types/react-redux@^6.0.11":
-  version "6.0.13"
-  resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-6.0.13.tgz#490ace7b49e57281edf85671bb455b31cdfa7d0b"
-  integrity sha512-69lPYT69CSvzQ75Ut4MfT+oQU9TAjCycdL6BQOrPztqbzdhzSe1d4Qj8vrMkTOm454Xz151zh+YT6S4t2OBopw==
-  dependencies:
-    "@types/react" "*"
-    redux "^4.0.0"
-
 "@types/react@*", "@types/react@^16.8.8":
   version "16.8.8"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.8.8.tgz#4b60a469fd2469f7aa6eaa0f8cfbc51f6d76e662"

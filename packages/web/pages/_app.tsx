@@ -1,8 +1,9 @@
-import { AppComponentContext, Container, default as App } from 'next/app';
-import { default as Head } from 'next/head';
 import * as React from 'react';
 
 import nextReduxWrapper from 'next-redux-wrapper';
+import { AppComponentContext, Container, default as App } from 'next/app';
+import { default as Head } from 'next/head';
+
 import { Provider } from 'react-redux';
 import { Store } from 'redux';
 

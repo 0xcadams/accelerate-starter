@@ -8,7 +8,7 @@ import { FeathersError } from '@feathersjs/errors';
 /**
  * INITIAL_STATE
  */
-interface IState {
+export interface IMessageState {
   readonly error?: FeathersError;
   readonly isFetching: boolean;
   readonly lastUpdated: number;
@@ -17,7 +17,7 @@ interface IState {
 
 const initialMessages: IMessage[] = [];
 
-const INITIAL_STATE: IState = {
+const INITIAL_STATE: IMessageState = {
   error: undefined,
   isFetching: false,
   lastUpdated: 0,
@@ -41,13 +41,13 @@ const getMessages = (
   return initialMessages;
 };
 
-const addNewMessage = (state: IState, message: IMessage) =>
+const addNewMessage = (state: IMessageState, message: IMessage) =>
   state.messages.some((msg) => msg._id === message._id)
     ? state.messages
     : [...(state && state.messages), message];
 
 export const MessageReducer = (
-  state: IState = INITIAL_STATE,
+  state: IMessageState = INITIAL_STATE,
   action: ActionType<typeof actions>
 ) => {
   switch (action.type) {
@@ -105,5 +105,3 @@ export const MessageReducer = (
       return state;
   }
 };
-
-export type IMessageState = IState;

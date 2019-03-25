@@ -1,4 +1,5 @@
 import { default as NextDocument, Head, Main, NextScript } from 'next/document';
+import * as React from 'react';
 
 export default class Document extends NextDocument {
   public render() {
