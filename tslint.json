@@ -1,7 +1,12 @@
 {
-  "extends": ["tslint-config-airbnb", "tslint-react-hooks"],
+  "extends": [
+    "tslint-config-airbnb",
+    "tslint-config-prettier",
+    "tslint-react-hooks"
+  ],
   "rules": {
     "max-line-length": { "options": [120] },
+    "member-ordering": [true, { "order": "fields-first" }],
     "no-bitwise": true,
     "only-arrow-functions": true,
     "no-var-requires": true,

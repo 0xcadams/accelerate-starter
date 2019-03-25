@@ -6,8 +6,8 @@ const createModel = (app) => {
   const mongooseClient = app.get('mongooseClient');
   const message = new mongooseClient.Schema(
     {
-      owner: { type: mongooseClient.Schema.Types.ObjectId, ref: 'user' },
-      body: { type: String }
+      body: { type: String },
+      owner: { type: mongooseClient.Schema.Types.ObjectId, ref: 'user' }
     },
     {
       timestamps: true
