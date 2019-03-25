@@ -1,7 +1,7 @@
 import { IMessage, IUser } from '@accelerate-starter/core';
 import feathers from '@feathersjs/feathers';
 import { expect } from 'chai';
-import feathersMemory from 'feathers-memory';
+import * as feathersMemory from 'feathers-memory';
 import { setUser } from './set-user';
 
 describe("'set-user' hook", () => {
