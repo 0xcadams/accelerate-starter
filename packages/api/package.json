@@ -9,8 +9,9 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc -p .",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "tslint -p . -c ../../tslint.json 'src/**/*.ts'",
-    "mocha": "ts-mocha -p ./tsconfig.json src/**/*.test.ts",
+    "mocha": "nyc --reporter=html --reporter=text mocha -p ./tsconfig.json src/**/*.test.ts",
     "now-build": "lerna run build",
     "serve": "node lib/index.js",
     "start": "nodemon --exec \"ts-node src/index.ts\"",
@@ -59,12 +60,22 @@
     "@types/passport-google-oauth2": "^0.1.2",
     "@types/winston": "^2.4.4",
     "chai": "^4.2.0",
+    "coveralls": "^3.0.3",
     "feathers-memory": "^3.0.2",
     "mocha": "^6.0.2",
     "nodemon": "^1.18.7",
+    "nyc": "^13.3.0",
+    "source-map-support": "^0.5.11",
     "supertest": "^4.0.2",
-    "ts-mocha": "^6.0.0",
     "ts-node": "^8.0.2",
     "typescript": "^3.3.3333"
+  },
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "exclude": [
+      "**/*.d.ts"
+    ]
   }
 }

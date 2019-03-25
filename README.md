@@ -9,8 +9,10 @@
   <br />
 
 [![Build Status](https://travis-ci.com/chase-adams/accelerate-starter.svg?branch=master)](https://travis-ci.com/chase-adams/accelerate-starter)
+[![Coverage Status](https://coveralls.io/repos/github/chase-adams/accelerate-starter/badge.svg?branch=master)](https://coveralls.io/github/chase-adams/accelerate-starter?branch=master)
 [![Uptime Robot](https://img.shields.io/uptimerobot/ratio/m782175114-036d055bce99279de3d423f5.svg)](https://stats.uptimerobot.com/49G0WUOLW)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
 
 </div>
 

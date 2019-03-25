@@ -11,17 +11,15 @@
     "Chase Adams (https://cadams.io)"
   ],
   "keywords": [
-    "now",
-    "typescript",
-    "node",
-    "feathersjs",
-    "cypress",
-    "now-cli",
-    "lerna",
     "commitizen",
-    "redux",
+    "cypress",
+    "feathersjs",
+    "lerna",
+    "now",
     "redux-saga",
-    "semantic-ui-react"
+    "redux",
+    "semantic-ui-react",
+    "typescript"
   ],
   "bugs": {
     "url": "https://github.com/chase-adams/accelerate-starter/issues"
@@ -33,9 +31,9 @@
     "fix": "lerna run lint --stream -- --fix",
     "lint": "lerna run lint --stream",
     "start": "lerna run start --stream",
-    "test": "lerna run test --stream",
     "test:integration": "lerna run test:integration --stream",
-    "test:integration:open": "lerna run test:integration:open --stream"
+    "test:integration:open": "lerna run test:integration:open --stream",
+    "test": "lerna run test --stream"
   },
   "workspaces": [
     "packages/*"
