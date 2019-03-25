@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Button, Grid, Header, Image, Segment } from 'semantic-ui-react';
-import * as Chance from 'chance';
+import * as uuid from 'uuid/v4';
 
 import * as MessageActions from '@Actions/MessageActions';
 import Messages from '@Components/Messages';
-
-const chance = new Chance();
 
 const mapDispatchToProps = {
   createMessage: MessageActions.createMessage.request,
@@ -39,7 +37,7 @@ export const HomePage: React.FC<typeof mapDispatchToProps> = ({
           <Grid.Column textAlign="center">
             <Button
               id="add-message-btn"
-              onClick={() => createMessage({ body: chance.sentence() })}
+              onClick={() => createMessage({ body: uuid() })}
               size="huge"
             >
               Add a Message

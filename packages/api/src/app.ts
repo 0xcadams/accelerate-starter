@@ -1,10 +1,12 @@
+import { default as feathersExpress } from '@feathersjs/express';
 import compression from 'compression';
 import cors from 'cors';
 import helmet from 'helmet';
-import { default as feathersExpress } from '@feathersjs/express';
 
 import feathers from '@feathersjs/feathers';
 import socketio from '@feathersjs/socketio';
+
+import { config as globalConfig } from '@accelerate-starter/core';
 
 import { logger } from './logger';
 
@@ -37,8 +39,11 @@ app.use(feathersExpress.urlencoded({ extended: true }));
 // app.use("/", express.static(app.get("public")));
 
 // Set up Plugins and providers
-app.configure(feathersExpress.rest());
-// app.configure(socketio());
+if (globalConfig.useSocketIo) {
+  app.configure(socketio());
+} else {
+  app.configure(feathersExpress.rest());
+}
 
 app.configure(mongooseClient);
 
@@ -56,7 +61,11 @@ app.use(feathersExpress.errorHandler({ logger }));
 
 app.hooks(hooks);
 
-const api = feathersExpress(feathers()).use('/api', app);
-app.setup(api);
+let api = app;
+
+if (!globalConfig.useSocketIo) {
+  api = feathersExpress(feathers()).use('/api', app);
+  app.setup(api);
+}
 
 export default api;

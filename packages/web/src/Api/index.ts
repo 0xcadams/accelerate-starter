@@ -1,26 +1,31 @@
 import feathers, { Paginated, Service } from '@feathersjs/feathers';
 
 import authenticationClient from '@feathersjs/authentication-client';
-// import { default as socketio } from '@feathersjs/socketio-client';
 import restClient from '@feathersjs/rest-client';
+import { default as socketio } from '@feathersjs/socketio-client';
 
 import isomorphicUnfetch from 'isomorphic-unfetch';
 import socketIoClient from 'socket.io-client';
 
-import { IMessage } from '@Models/Message';
-import { IUser } from '@Models/User';
+import {
+  config as globalConfig,
+  IMessage,
+  IUser
+} from '@accelerate-starter/core';
 
 const app = feathers();
 
-// const socket = socketIoClient('/');
-// app.configure(socketio(socket));
-
-const rest = restClient('/api');
-app.configure(rest.fetch(isomorphicUnfetch));
+if (globalConfig.useSocketIo) {
+  const socket = socketIoClient('/');
+  app.configure(socketio(socket));
+} else {
+  const rest = restClient('/api');
+  app.configure(rest.fetch(isomorphicUnfetch));
+}
 
 app.configure(
   authenticationClient({
-    path: 'api/authentication',
+    path: 'authentication',
     service: 'v1/user',
     storage:
       typeof localStorage === 'undefined' ? undefined : window.localStorage
@@ -34,7 +39,7 @@ const servicePaths = {
 
 const devWait = async (): Promise<boolean> => {
   if (process.env.NODE_ENV === 'development') {
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
   }
 
   return true;

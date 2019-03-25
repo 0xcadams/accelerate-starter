@@ -3,10 +3,10 @@ import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import reduxPromiseMiddleware from 'redux-promise-middleware';
 import reduxSaga from 'redux-saga';
 
-import { rootReducer, IStore } from '@Reducers';
+import { IStore, rootReducer } from '@Reducers';
 import { rootSaga } from '@Sagas';
 
-export default (initialState: any) => {
+export default (initialState: IStore) => {
   const sagaMiddleware = reduxSaga();
 
   const store = createStore(

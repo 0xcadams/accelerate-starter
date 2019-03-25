@@ -1,9 +1,9 @@
 import authentication from '@feathersjs/authentication';
 import authenticationJwt from '@feathersjs/authentication-jwt';
 import authenticationLocal from '@feathersjs/authentication-local';
-import authenticationOauth2 from '@feathersjs/authentication-oauth2';
-import { default as FacebookStrategy } from 'passport-facebook';
-import { default as GoogleStrategy } from 'passport-google-oauth20';
+// import authenticationOauth2 from '@feathersjs/authentication-oauth2';
+// import { default as FacebookStrategy } from 'passport-facebook';
+// import { default as GoogleStrategy } from 'passport-google-oauth20';
 
 const auth = (app) => {
   const config = app.get('authentication');
@@ -40,7 +40,7 @@ const auth = (app) => {
   // The `authentication` service is used to create a JWT.
   // The before `create` hook registers strategies that can be used
   // to create a new valid JWT (e.g. local or oauth2)
-  app.service('api/authentication').hooks({
+  app.service('authentication').hooks({
     before: {
       create: [authentication.hooks.authenticate(config.strategies)],
       remove: [authentication.hooks.authenticate('jwt')]

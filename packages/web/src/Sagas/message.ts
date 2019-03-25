@@ -1,7 +1,7 @@
-import * as MessageActions from '@Actions/MessageActions';
+import { IMessage } from '@accelerate-starter/core';
 import * as AuthActions from '@Actions/AuthActions';
+import * as MessageActions from '@Actions/MessageActions';
 import * as api from '@Api';
-import { IMessage } from '@Models/Message';
 import { all, call, fork, put, take, takeLatest } from 'redux-saga/effects';
 
 export function* getAllMessages() {

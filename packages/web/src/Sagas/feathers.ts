@@ -1,11 +1,11 @@
+import { IMessage } from '@accelerate-starter/core';
 import { createMessageIncoming } from '@Actions/MessageActions';
 import { messageService } from '@Api';
 import { Service } from '@feathersjs/feathers';
-import { IMessage } from '@Models/Message';
 import { eventChannel } from 'redux-saga';
 import { all, call, fork, put, take } from 'redux-saga/effects';
 
-function createSocketChannel(service: Service<any>) {
+const createSocketChannel = <T>(service: Service<T>) => {
   return eventChannel((emit) => {
     const pingHandler = emit;
 
@@ -15,7 +15,7 @@ function createSocketChannel(service: Service<any>) {
       service.removeListener('created', pingHandler);
     };
   });
-}
+};
 
 /*
  * WATCHERS

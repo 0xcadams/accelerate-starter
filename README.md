@@ -1,7 +1,7 @@
 <div align="center">
   <img src="packages/web/static/accelerate-starter.png" width="200" title="Accelerate Starter">
   <h3>
-    A starter to facilitate rapid and scalable development using NextJS, Feathers, and Typescript (Under active development...)
+    A starter to facilitate rapid and scalable development using NextJS, FeathersJS, Cypress, and Typescript.
   </h3>
   <div>
     Accelerate is a starter project to enable a team to quickly jump past common hurdles, such as login/sign-up pages, and begin solving their core business issues.

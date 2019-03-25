@@ -1,0 +1,16 @@
+{
+  "name": "@accelerate-starter/core",
+  "version": "0.0.1",
+  "description": "Library to share code between accelerate-starter applications.",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc -p ."
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.6",
+    "chai": "^4.2.0",
+    "mocha": "^6.0.2"
+  }
+}

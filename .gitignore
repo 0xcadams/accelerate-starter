@@ -145,3 +145,6 @@ $RECYCLE.BIN/
 # Cypress output
 **/cypress/screenshots/
 **/cypress/videos/
+
+# ts output
+lib

@@ -1,7 +1,7 @@
 import { ActionType, getType, StateType } from 'typesafe-actions';
 
+import { IUser } from '@accelerate-starter/core';
 import * as actions from '@Actions/AuthActions';
-import { IUser } from '@Models/User';
 import { FeathersError } from '@feathersjs/errors';
 
 /**

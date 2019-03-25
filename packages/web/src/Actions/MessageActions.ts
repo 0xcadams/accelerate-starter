@@ -1,7 +1,7 @@
 import { Paginated } from '@feathersjs/feathers';
 import { createAsyncAction, createStandardAction } from 'typesafe-actions';
 
-import { IMessage } from '@Models/Message';
+import { IMessage } from '@accelerate-starter/core';
 import { FeathersError } from '@feathersjs/errors';
 
 /*

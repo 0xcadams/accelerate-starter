@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { default as Link } from 'next/link';
-import { withRouter, SingletonRouter } from 'next/router';
+import { SingletonRouter, withRouter } from 'next/router';
 import { Button, Container, Dropdown, Menu, Segment } from 'semantic-ui-react';
 
 import * as AuthActions from '@Actions/AuthActions';

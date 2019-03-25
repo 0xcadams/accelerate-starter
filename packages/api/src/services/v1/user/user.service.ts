@@ -1,6 +1,6 @@
 // Initializes the `user` service on path `/user`
-import { createModel } from '../../../models/v1/user.model';
 import { default as createService } from 'feathers-mongoose';
+import { createModel } from '../../../models/v1/user.model';
 import { hooks } from './user.hooks';
 
 const user = (app) => {
