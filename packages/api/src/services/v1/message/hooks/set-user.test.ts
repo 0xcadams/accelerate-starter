@@ -2,9 +2,9 @@ import { IMessage, IUser } from '@accelerate-starter/core';
 import feathers from '@feathersjs/feathers';
 import { expect } from 'chai';
 import feathersMemory from 'feathers-memory';
-import { populateUser } from './populate-user';
+import { setUser } from './set-user';
 
-describe("'populate-user' hook", () => {
+describe("'set-user' hook", () => {
   let app;
   let user: IUser;
 
@@ -25,7 +25,7 @@ describe("'populate-user' hook", () => {
 
     // Add the hook to the dummy service
     app.service('message').hooks({
-      before: populateUser()
+      before: setUser()
     });
 
     const userBody: IUser = {

@@ -1,10 +1,11 @@
 import { hooks as authHooks } from '@feathersjs/authentication';
 import { populateUser } from './hooks/populate-user';
+import { setUser } from './hooks/set-user';
 
 const hooks = {
   before: {
     all: [authHooks.authenticate('jwt')],
-    create: [populateUser()],
+    create: [setUser()],
     find: [],
     get: [],
     patch: [],
@@ -13,7 +14,7 @@ const hooks = {
   },
 
   after: {
-    all: [],
+    all: [populateUser()],
     create: [],
     find: [],
     get: [],

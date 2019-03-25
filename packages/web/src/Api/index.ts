@@ -95,9 +95,6 @@ export const createMessage = async (message: IMessage): Promise<IMessage> =>
 
 export const getAllMessages = async (): Promise<
   IMessage | IMessage[] | Paginated<IMessage>
-> =>
-  messageService.find({
-    query: { $populate: 'owner' }
-  });
+> => messageService.find();
 
 export { app };

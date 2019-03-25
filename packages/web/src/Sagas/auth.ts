@@ -8,7 +8,7 @@ export function* createUser(user: IUser) {
   try {
     const response = yield call(api.createUser, user);
     yield put(AuthActions.authenticateUser.success(response));
-    yield call(toggleAuthModal, { showModal: false });
+    yield call(authenticateUser, user);
   } catch (error) {
     yield put(AuthActions.authenticateUser.failure(error));
   }
