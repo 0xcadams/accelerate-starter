@@ -10,6 +10,7 @@
     "format": "prettier --write --single-quote --trailing-comma es5",
     "lint": "tslint -c ../../tslint.json 'src/**/*.ts?(x)' 'pages/**/*.ts?(x)'",
     "mocha": "ts-mocha -p ./tsconfig.json src/**/*.test.tsx",
+    "now-build": "lerna run build",
     "serve": "NODE_ENV=production node ./app/server.js",
     "start": "PROXY_MODE=local nodemon --watch app --watch app/server.js",
     "test": "yarn lint && yarn mocha",

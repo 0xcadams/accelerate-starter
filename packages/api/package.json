@@ -10,6 +10,7 @@
     "build": "tsc -p .",
     "lint": "tslint -c ../../tslint.json 'src/**/*.ts'",
     "mocha": "ts-mocha -p ./tsconfig.json src/**/*.test.ts",
+    "now-build": "lerna run build",
     "serve": "node lib/index.js",
     "start": "nodemon --exec \"ts-node src/index.ts\"",
     "test": "yarn lint && yarn mocha",
