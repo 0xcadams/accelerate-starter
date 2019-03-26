@@ -9,7 +9,7 @@ jobs:
         - yarn build
         - export CYPRESS_BASE_URL=$(now -t $NOW_TOKEN)
         - yarn test:integration
-        - if [ ! -z "$TRAVIS_PULL_REQUEST_SLUG" ] ; then yarn lh -- --perf=80 --seo=90 --a11y=80 --bp=80 --pwa=100 $CYPRESS_BASE_URL ; fi
+        - if [ ! -z "$TRAVIS_PULL_REQUEST_SLUG" ] ; then yarn lh -- --perf=70 --seo=90 --a11y=80 --bp=80 --pwa=100 $CYPRESS_BASE_URL ; fi
 
 stages:
   - test
