@@ -1,43 +1,52 @@
 <div align="center">
   <img src="packages/web/static/accelerate-starter.png" width="200" title="Accelerate Starter">
-  <h3>
+  <h2>
     An opinionated universal web app + API starter kit to facilitate rapid and scalable development using NextJS, FeathersJS, and MongoDB.
-  </h3>
+  </h2>
   <div>
     Accelerate is a starter project to enable a team to quickly jump past common hurdles such as user authentication, unit and integration tests, CI/CD, and tooling to begin solving their core business problems.
   </div>
-  <br />
-  <sub><sup>
-    <div style="font-weight: bold">Web</div>
+  <h3>Technologies:</h3>
+  <div>
+    <strong>Web</strong>
+    <br />
     <a href="https://nextjs.org/">NextJS</a>,
     <a href="https://reactjs.org/">React</a>,
     <a href="https://react-redux.js.org/">React Redux</a>,
     <a href="">Redux Saga</a>,
     <a href="">Semantic UI</a>, and
     <a href="">Babel</a>
-    <div style="font-weight: bold">API</div>
+    <br />
+    <strong>API</strong>
+    <br />
     <a href="">Socket.IO</a>,
     <a href="">FeathersJS</a>,
     <a href="">Nodemon</a>,
     <a href="">Express</a>,
     <a href="">Mongoose</a>, and
     <a href="">Winston</a>
-    <div style="font-weight: bold">Testing</div>
+    <br />
+    <strong>Testing</strong>
+    <br />
     <a href="">Cypress</a>,
     <a href="">Mocha</a>,
     <a href="">Enzyme</a>, and
     <a href="">Chai</a>
-    <div style="font-weight: bold">Tooling</div>
+    <br />
+    <strong>Tooling</strong>
+    <br />
     <a href="">Typescript</a>,
     <a href="">TSLint (Airbnb Conventions)</a>,
     <a href="">Prettier</a>,
     <a href="">Lerna</a>,
     <a href="">Commitizen</a>, and
     <a href="">Commitlint</a>
-    <div style="font-weight: bold">Hosting</div>
+    <br />
+    <strong>Hosting</strong>
+    <br />
     <a href="">Zeit Now</a>
-  </sup></sub>
-  <br />
+  </div>
+
   <br />
 
 [![Build Status](https://travis-ci.com/chase-adams/accelerate-starter.svg?branch=master)](https://travis-ci.com/chase-adams/accelerate-starter)
@@ -48,8 +57,6 @@
 </div>
 
 ## Getting Started
-
-**bold**
 
 First, start the MongoDB database using [Docker](https://www.docker.com/).
 
