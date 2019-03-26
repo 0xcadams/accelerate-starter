@@ -1,6 +1,5 @@
-import feathers, { Paginated, Service } from '@feathersjs/feathers';
-
 import authenticationClient from '@feathersjs/authentication-client';
+import feathers, { Paginated, Service } from '@feathersjs/feathers';
 import restClient from '@feathersjs/rest-client';
 import { default as socketio } from '@feathersjs/socketio-client';
 

@@ -13,10 +13,6 @@ jobs:
 stages:
   - test
 
-branches:
-  except:
-    - /^v\d+\.\d+\.\d+$/
-
 cache:
   directories:
     - web/.next

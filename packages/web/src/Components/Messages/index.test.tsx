@@ -1,8 +1,9 @@
-import { expect } from 'chai';
-import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import { Item, Placeholder, Segment } from 'semantic-ui-react';
+import { expect } from 'chai';
+import { shallow } from 'enzyme';
+
+import { Item, Placeholder } from 'semantic-ui-react';
 
 import { IUser } from '@accelerate-starter/core';
 import { IMessageState } from '@Reducers';

@@ -6,8 +6,8 @@ const createModel = (app) => {
   const mongooseClient = app.get('mongooseClient');
   const user = new mongooseClient.Schema(
     {
-      email: { type: String, unique: true, lowercase: true, required: true },
       avatar: { type: String },
+      email: { type: String, unique: true, lowercase: true, required: true },
       facebookId: { type: String },
       googleId: { type: String },
       name: { type: String, required: true },

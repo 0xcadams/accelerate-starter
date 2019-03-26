@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+
 import { Button, Grid, Header, Image, Segment } from 'semantic-ui-react';
-import * as uuid from 'uuid/v4';
+import { default as uuid } from 'uuid/v4';
 
 import * as MessageActions from '@Actions/MessageActions';
 import Messages from '@Components/Messages';

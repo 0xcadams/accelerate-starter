@@ -12,7 +12,6 @@
       "@Api/*": ["./src/Api/*"],
       "@Components/*": ["./src/Components/*"],
       "@Components": ["./src/Components"],
-      "@Config": ["./src/Config"],
       "@Reducers": ["./src/Reducers"],
       "@Reducers/*": ["./src/Reducers/*"],
       "@Redux": ["./src/Redux"],

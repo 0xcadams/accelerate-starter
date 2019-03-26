@@ -9,7 +9,7 @@ const channels = (app) => {
     app.channel('anonymous').join(connection);
   });
 
-  app.on('login', (authResult, { connection }) => {
+  app.on('login', (_authResult, { connection }) => {
     // connection can be undefined if there is no
     // real-time connection, e.g. when logging in via REST
     if (connection) {
@@ -36,18 +36,17 @@ const channels = (app) => {
     }
   });
 
-  // eslint-disable-next-line no-unused-vars
   // app.publish(() => {
   //   // Here you can add event publishers to channels set up in `channels.js`
   //   // To publish only for a specific event use `app.publish(eventname, () => {})`
 
-  //   // console.log("Publishing all events to all authenticated users."); // eslint-disable-line
+  //   // console.log("Publishing all events to all authenticated users.");
 
   //   // e.g. to publish all service events to all authenticated users use
   //   return app.channel("everybody");
   // });
 
-  app.publish((data, context) => {
+  app.publish(() => {
     return app.channel('authenticated');
   });
 

@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-unused-vars
-const middleware = (app) => {
+const middleware = () => {
   // Add your custom middleware here. Remember that
   // in Express, the order matters.
 };

@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+
+import * as emailValidator from 'email-validator';
 import {
   Button,
   Checkbox,
@@ -8,8 +10,6 @@ import {
   Message,
   Modal
 } from 'semantic-ui-react';
-
-import * as emailValidator from 'email-validator';
 
 import * as AuthActions from '@Actions/AuthActions';
 import { IAuthModalState, IStore } from '@Reducers';
@@ -56,8 +56,8 @@ export const AuthModal: React.FC<
     const isEmailValid = emailValidator.validate(newEmail);
 
     setEmail({
-      value: newEmail,
-      error: !isEmailValid ? 'Email must be valid.' : ''
+      error: !isEmailValid ? 'Email must be valid.' : '',
+      value: newEmail
     });
   };
 
@@ -74,11 +74,11 @@ export const AuthModal: React.FC<
     const newPassword = event.target.value;
 
     setPassword({
-      value: newPassword,
       error:
         newPassword.length < passwordLengthMinimum
           ? `Password must be at least ${passwordLengthMinimum} characters.`
-          : ''
+          : '',
+      value: newPassword
     });
   };
 

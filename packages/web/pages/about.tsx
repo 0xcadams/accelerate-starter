@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Grid, Header, Image, Segment } from 'semantic-ui-react';
+import packageJson from '../../../package.json';
 
 const AboutPage: React.FC<void> = () => (
   <Segment style={{ padding: '8em 0em' }} vertical>
@@ -9,11 +10,7 @@ const AboutPage: React.FC<void> = () => (
           <Header as="h3" style={{ fontSize: '2em' }}>
             About
           </Header>
-          <p>
-            This is a project to help teams quickly jump past common hurdles,
-            such as login/sign-up pages, and begin solving their core business
-            issues.
-          </p>
+          <p>{packageJson.description}</p>
         </Grid.Column>
         <Grid.Column floated="right" width={4}>
           <Image rounded size="large" src="/static/accelerate-starter.png" />

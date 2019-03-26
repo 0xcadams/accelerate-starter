@@ -1,10 +1,44 @@
 <div align="center">
   <img src="packages/web/static/accelerate-starter.png" width="200" title="Accelerate Starter">
   <h3>
-    A starter to facilitate rapid and scalable development using NextJS, FeathersJS, Cypress, and Typescript.
+    An opinionated universal web app + API starter kit to facilitate rapid and scalable development using NextJS, FeathersJS, and MongoDB.
   </h3>
   <div>
-    Accelerate is a starter project to enable a team to quickly jump past common hurdles, such as login/sign-up pages, and begin solving their core business issues.
+    Accelerate is a starter project to enable a team to quickly jump past common hurdles such as user authentication, unit and integration tests, CI/CD, and tooling to begin solving their core business problems.
+  </div>
+  <br />
+  <!-- <div style="font-size: 0.8em; font-weight: bold">
+    Built with the following technologies:
+  </div> -->
+  <div style="font-size: 0.8em">
+    <div style="font-weight: bold">Web</div>
+    <a href="">NextJS</a>,
+    <a href="">React</a>,
+    <a href="">React Redux</a>,
+    <a href="">Redux Saga</a>,
+    <a href="">Semantic UI</a>, and
+    <a href="">Babel</a>
+    <div style="font-weight: bold">API</div>
+    <a href="">Socket.IO</a>,
+    <a href="">FeathersJS</a>,
+    <a href="">Nodemon</a>,
+    <a href="">Express</a>,
+    <a href="">Mongoose</a>, and
+    <a href="">Winston</a>
+    <div style="font-weight: bold">Testing</div>
+    <a href="">Cypress</a>,
+    <a href="">Mocha</a>,
+    <a href="">Enzyme</a>, and
+    <a href="">Chai</a>
+    <div style="font-weight: bold">Tooling</div>
+    <a href="">Typescript</a>,
+    <a href="">TSLint (Airbnb Conventions)</a>,
+    <a href="">Prettier</a>,
+    <a href="">Lerna</a>,
+    <a href="">Commitizen</a>, and
+    <a href="">Commitlint</a>
+    <div style="font-weight: bold">Hosting</div>
+    <a href="">Zeit Now</a>
   </div>
   <br />
 

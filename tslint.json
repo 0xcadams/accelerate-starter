@@ -1,9 +1,21 @@
 {
-  "extends": ["tslint-config-airbnb", "tslint-react-hooks"],
+  "extends": [
+    "tslint-config-airbnb",
+    "tslint-config-prettier",
+    "tslint-react-hooks"
+  ],
   "rules": {
-    "max-line-length": {
-      "options": [120]
-    },
+    "max-line-length": { "options": [120] },
+    "member-ordering": [true, { "order": "fields-first" }],
+    "no-bitwise": true,
+    "only-arrow-functions": true,
+    "no-var-requires": true,
+    "no-any": true,
+    "ordered-imports": true,
+    "prefer-for-of": true,
+    "promise-function-async": true,
+    "react-hooks-nesting": "error",
+    "ter-arrow-parens": true,
     "trailing-comma": [true, { "multiline": "never", "singleline": "never" }],
     "variable-name": [
       true,
@@ -12,16 +24,7 @@
       "allow-pascal-case",
       "allow-snake-case",
       "ban-keywords"
-    ],
-    "no-bitwise": true,
-    "promise-function-async": true,
-    "prefer-for-of": true,
-    "only-arrow-functions": true,
-    "no-var-requires": true,
-    "no-any": true,
-    "ordered-imports": true,
-    "ter-arrow-parens": true,
-    "react-hooks-nesting": "error"
+    ]
   },
   "jsRules": {
     "max-line-length": {
