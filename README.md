@@ -30,8 +30,9 @@
     <br />
     <a href="https://www.cypress.io/">Cypress</a>,
     <a href="https://mochajs.org/">Mocha</a>,
-    <a href="https://airbnb.io/enzyme/">Enzyme</a>, and
-    <a href="https://www.chaijs.com/">Chai</a>
+    <a href="https://airbnb.io/enzyme/">Enzyme</a>,
+    <a href="https://www.chaijs.com/">Chai</a>, and
+    <a href="https://github.com/GoogleChromeLabs/lighthousebot">Lighthousebot</a>.
     <br />
     <strong>Tooling</strong>
     <br />

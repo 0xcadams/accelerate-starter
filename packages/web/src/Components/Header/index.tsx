@@ -9,8 +9,6 @@ import { Button, Container, Dropdown, Menu, Segment } from 'semantic-ui-react';
 import * as AuthActions from '@Actions/AuthActions';
 import { IAuthModalState, IStore } from '@Reducers';
 
-import packageJson from '../../../../../package.json';
-
 interface IHeaderProps {
   getWidth(): number;
 }
@@ -102,16 +100,15 @@ const Header: React.FC<IProps> = ({
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
-              // <Button loading={isFetchingAuth} onClick={logOutUser} icon>
-              //   <Icon name="user" />
-              // </Button>
             )}
             <Button
+              aria-label="GitHub Link"
               id="github-btn"
               style={{ marginLeft: '0.5em' }}
               icon="github"
               as="a"
               target="_blank"
+              rel="noopener"
               href="https://github.com/chase-adams/accelerate-starter"
             />
           </Menu.Item>

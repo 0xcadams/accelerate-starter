@@ -3,8 +3,11 @@ import * as React from 'react';
 
 export default class Document extends NextDocument {
   public render() {
+    const description =
+      'An opinionated universal web app + API starter kit to facilitate ' +
+      'rapid and scalable development using NextJS, FeathersJS, and MongoDB.';
     return (
-      <html>
+      <html lang="en">
         <Head>
           <link
             rel="apple-touch-icon"
@@ -40,9 +43,10 @@ export default class Document extends NextDocument {
           <meta name="theme-color" content="#6699cc" />
           <meta
             name="viewport"
-            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+            content="width=device-width, initial-scale=1.0"
           />
           <meta charSet="utf-8" />
+          <meta name="description" content={description} />
         </Head>
         <body>
           <Main />

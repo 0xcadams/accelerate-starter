@@ -31,7 +31,12 @@ export const HomePage: React.FC<typeof mapDispatchToProps> = ({
             <Messages />
           </Grid.Column>
           <Grid.Column floated="right" width={4}>
-            <Image rounded size="large" src="/static/accelerate-starter.png" />
+            <Image
+              alt="Accelerate Starter Logo"
+              rounded
+              size="large"
+              src="/static/accelerate-starter.png"
+            />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
