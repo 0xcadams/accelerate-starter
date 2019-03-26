@@ -8486,10 +8486,10 @@ node-sass@^4.11.0:
     stdout-stream "^1.4.0"
     "true-case-path" "^1.0.2"
 
-nodemon@1.18.1:
-  version "1.18.1"
-  resolved "https://registry.yarnpkg.com/nodemon/-/nodemon-1.18.1.tgz#873d2f7799662c549f7ea557db6934d5cbf665d6"
-  integrity sha512-zKKrRcn5htBkPz6N5SiFLG8kneJxhW//zO7/RB08TaQgBZrbmjUlORBy6ALIbpwwp+Q8F9mWbnbkJXh6rjlALA==
+nodemon@1.17.3:
+  version "1.17.3"
+  resolved "https://registry.yarnpkg.com/nodemon/-/nodemon-1.17.3.tgz#3b0bbc2ee05ccb43b1aef15ba05c63c7bc9b8530"
+  integrity sha512-8AtS+wA5u6qoE12LONjqOzUzxAI5ObzSw6U5LgqpaO/0y6wwId4l5dN0ZulYyYdpLZD1MbkBp7GjG1hqaoRqYg==
   dependencies:
     chokidar "^2.0.2"
     debug "^3.1.0"
