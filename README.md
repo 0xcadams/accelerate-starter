@@ -6,7 +6,7 @@
   <div>
     Accelerate is a starter project to enable a team to quickly jump past common hurdles such as user authentication, unit and integration tests, CI/CD, and tooling to begin solving their core business problems.
   </div>
-  <br />
+  <h2></h2>
   <div>
     <strong>Web</strong>
     <br />
