@@ -16,4 +16,5 @@ stages:
 
 cache:
   directories:
-    - web/.next
+    - packages/web/.next
+    - node_modules
