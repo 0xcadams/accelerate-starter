@@ -9,6 +9,8 @@ import { Button, Container, Dropdown, Menu, Segment } from 'semantic-ui-react';
 import * as AuthActions from '@Actions/AuthActions';
 import { IAuthModalState, IStore } from '@Reducers';
 
+import packageJson from '../../../../../package.json';
+
 interface IHeaderProps {
   getWidth(): number;
 }
@@ -25,7 +27,6 @@ type IProps = IAuthModalState &
   IHeaderProps & { router: SingletonRouter };
 
 const Header: React.FC<IProps> = ({
-  getWidth,
   children,
   user,
   isFetching,
@@ -58,7 +59,6 @@ const Header: React.FC<IProps> = ({
                 <Button
                   id="login-btn"
                   loading={isFetching}
-                  as="a"
                   onClick={() =>
                     toggleAuthModal({
                       isSignUp: false,
@@ -71,7 +71,6 @@ const Header: React.FC<IProps> = ({
                 <Button
                   className="signup-btn"
                   loading={isFetching}
-                  as="a"
                   primary
                   style={{ marginLeft: '0.5em' }}
                   onClick={() =>
@@ -107,6 +106,14 @@ const Header: React.FC<IProps> = ({
               //   <Icon name="user" />
               // </Button>
             )}
+            <Button
+              id="github-btn"
+              style={{ marginLeft: '0.5em' }}
+              icon="github"
+              as="a"
+              target="_blank"
+              href="https://github.com/chase-adams/accelerate-starter"
+            />
           </Menu.Item>
         </Container>
       </Menu>

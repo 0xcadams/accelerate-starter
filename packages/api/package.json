@@ -9,9 +9,8 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc -p .",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "tslint -p . -c ../../tslint.json 'src/**/*.ts'",
-    "mocha": "nyc --reporter=html --reporter=text mocha packages/**/*.test.ts",
+    "mocha": "mocha src/**/*.test.ts",
     "now-build": "lerna run build",
     "serve": "node lib/index.js",
     "start": "nodemon --exec \"ts-node src/index.ts\"",
@@ -55,13 +54,5 @@
     "@types/winston": "^2.4.4",
     "feathers-memory": "^3.0.2",
     "source-map-support": "^0.5.11"
-  },
-  "nyc": {
-    "extension": [
-      ".ts"
-    ],
-    "exclude": [
-      "**/*.d.ts"
-    ]
   }
 }
