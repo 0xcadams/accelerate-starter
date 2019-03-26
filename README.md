@@ -7,14 +7,11 @@
     Accelerate is a starter project to enable a team to quickly jump past common hurdles such as user authentication, unit and integration tests, CI/CD, and tooling to begin solving their core business problems.
   </div>
   <br />
-  <!-- <div style="font-size: 0.8em; font-weight: bold">
-    Built with the following technologies:
-  </div> -->
-  <div style="font-size: 0.8em">
+  <sub><sup>
     <div style="font-weight: bold">Web</div>
-    <a href="">NextJS</a>,
-    <a href="">React</a>,
-    <a href="">React Redux</a>,
+    <a href="https://nextjs.org/">NextJS</a>,
+    <a href="https://reactjs.org/">React</a>,
+    <a href="https://react-redux.js.org/">React Redux</a>,
     <a href="">Redux Saga</a>,
     <a href="">Semantic UI</a>, and
     <a href="">Babel</a>
@@ -39,16 +36,20 @@
     <a href="">Commitlint</a>
     <div style="font-weight: bold">Hosting</div>
     <a href="">Zeit Now</a>
-  </div>
+  </sup></sub>
+  <br />
   <br />
 
 [![Build Status](https://travis-ci.com/chase-adams/accelerate-starter.svg?branch=master)](https://travis-ci.com/chase-adams/accelerate-starter)
 [![Uptime Robot](https://img.shields.io/uptimerobot/ratio/m782175114-036d055bce99279de3d423f5.svg)](https://stats.uptimerobot.com/49G0WUOLW)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://lbesson.mit-license.org/)
 
 </div>
 
 ## Getting Started
+
+**bold**
 
 First, start the MongoDB database using [Docker](https://www.docker.com/).
 
