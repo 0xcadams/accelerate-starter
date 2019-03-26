@@ -52,7 +52,7 @@
 [![Build Status](https://travis-ci.com/chase-adams/accelerate-starter.svg?branch=master)](https://travis-ci.com/chase-adams/accelerate-starter)
 [![Uptime Robot](https://img.shields.io/uptimerobot/ratio/m782175114-036d055bce99279de3d423f5.svg)](https://stats.uptimerobot.com/49G0WUOLW)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-[![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://lbesson.mit-license.org/)
+[![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://lbesson.mit-license.org/) [![Greenkeeper badge](https://badges.greenkeeper.io/chase-adams/accelerate-starter.svg)](https://greenkeeper.io/)
 
 </div>
 
