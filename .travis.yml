@@ -9,6 +9,7 @@ jobs:
         - yarn build
         - export CYPRESS_BASE_URL=$(now -t $NOW_TOKEN)
         - yarn test:integration
+        - yarn lh -- --perf=85 --pwa=100 $CYPRESS_BASE_URL
 
 stages:
   - test

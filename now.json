@@ -10,6 +10,14 @@
   "routes": [
     { "src": "/socket.io/(.*)", "dest": "packages/api/src/app.ts" },
     { "src": "/api/(.*)", "dest": "packages/api/src/app.ts" },
+    {
+      "src": "^/service-worker.js$",
+      "dest": "/packages/web/_next/static/service-worker.js",
+      "headers": {
+        "cache-control": "public, max-age=43200, immutable",
+        "service-worker-allowed": "/"
+      }
+    },
     { "src": "/(.*)", "dest": "/packages/web/$1" }
   ],
   "builds": [
