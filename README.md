@@ -36,7 +36,7 @@
     <strong>Tooling</strong>
     <br />
     <a href="https://www.typescriptlang.org/">Typescript</a>,
-    <a href="https://palantir.github.io/tslint/">TSLint (Airbnb Conventions)</a>,
+    <a href="https://palantir.github.io/tslint/">TSLint (Airbnb)</a>,
     <a href="https://prettier.io/">Prettier</a>,
     <a href="https://lernajs.io/">Lerna</a>,
     <a href="https://github.com/commitizen/cz-cli">Commitizen</a>, and
