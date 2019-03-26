@@ -108,6 +108,7 @@ const Header: React.FC<IProps> = ({
               icon="github"
               as="a"
               target="_blank"
+              rel="noopener"
               href="https://github.com/chase-adams/accelerate-starter"
             />
           </Menu.Item>
