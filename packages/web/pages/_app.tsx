@@ -10,8 +10,8 @@ import { Store } from 'redux';
 import mobileDetect from 'mobile-detect';
 import { Responsive } from 'semantic-ui-react';
 
-import { Layout } from '@Components/Layout';
-import store from '@Redux/store';
+import { Layout } from '@components/Layout';
+import store from '@redux/store';
 
 import 'semantic-ui-css/semantic.min.css';
 

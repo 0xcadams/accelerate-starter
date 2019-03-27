@@ -6,12 +6,13 @@
       {
         "root": ["./"],
         "alias": {
-          "@Actions": "./src/Actions",
-          "@Api": "./src/Api",
-          "@Components": "./src/Components",
-          "@Reducers": "./src/Reducers",
-          "@Redux": "./src/Redux",
-          "@Sagas": "./src/Sagas"
+          "@actions": "./src/actions",
+          "@api": "./src/api",
+          "@assets": "./src/assets",
+          "@components": "./src/components",
+          "@reducers": "./src/reducers",
+          "@redux": "./src/redux",
+          "@sagas": "./src/sagas"
         }
       }
     ]

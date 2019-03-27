@@ -2,7 +2,7 @@ import { Paginated } from '@feathersjs/feathers';
 import { ActionType, getType } from 'typesafe-actions';
 
 import { IMessage } from '@accelerate-starter/core';
-import * as actions from '@Actions/MessageActions';
+import * as actions from '@actions/MessageActions';
 import { FeathersError } from '@feathersjs/errors';
 
 /**

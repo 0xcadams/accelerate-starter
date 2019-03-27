@@ -6,7 +6,7 @@ import { shallow } from 'enzyme';
 import { Item, Placeholder } from 'semantic-ui-react';
 
 import { IUser } from '@accelerate-starter/core';
-import { IMessageState } from '@Reducers';
+import { IMessageState } from '@reducers';
 import { Messages } from '.';
 
 const loadingState = {

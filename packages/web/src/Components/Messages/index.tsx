@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Item, Message, Placeholder, Segment } from 'semantic-ui-react';
 
 import { IMessage } from '@accelerate-starter/core';
-import { IMessageState, IStore } from '@Reducers';
+import { IMessageState, IStore } from '@reducers';
 
 export const Messages: React.FC<IMessageState> = ({
   isFetching,

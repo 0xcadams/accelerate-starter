@@ -3,25 +3,25 @@
   "compilerOptions": {
     "outDir": "lib",
     "jsx": "react",
-    "lib": ["es2017", "dom"],
+    "lib": ["esnext", "dom"],
     "baseUrl": ".",
     "paths": {
-      "@Actions": ["./src/Actions"],
-      "@Actions/*": ["./src/Actions/*"],
-      "@Api": ["./src/Api"],
-      "@Api/*": ["./src/Api/*"],
-      "@Components/*": ["./src/Components/*"],
-      "@Components": ["./src/Components"],
-      "@Reducers": ["./src/Reducers"],
-      "@Reducers/*": ["./src/Reducers/*"],
-      "@Redux": ["./src/Redux"],
-      "@Redux/*": ["./src/Redux/*"],
-      "@Sagas": ["./src/Sagas"],
-      "@Sagas/*": ["./src/Sagas/*"]
+      "@actions": ["./src/actions"],
+      "@actions/*": ["./src/actions/*"],
+      "@assets": ["./src/assets"],
+      "@assets/*": ["./src/assets/*"],
+      "@api": ["./src/api"],
+      "@api/*": ["./src/api/*"],
+      "@components/*": ["./src/components/*"],
+      "@components": ["./src/components"],
+      "@reducers": ["./src/reducers"],
+      "@reducers/*": ["./src/reducers/*"],
+      "@redux": ["./src/redux"],
+      "@redux/*": ["./src/redux/*"],
+      "@sagas": ["./src/sagas"],
+      "@sagas/*": ["./src/sagas/*"]
     }
   },
-  "compileOnSave": true,
-  "references": [
-    { "path": "../core" }
-  ]
+  "includes": ["./typings/**/*.d.ts"],
+  "references": [{ "path": "../core" }]
 }

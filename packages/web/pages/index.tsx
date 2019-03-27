@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import { Button, Grid, Header, Image, Segment } from 'semantic-ui-react';
 import { default as uuid } from 'uuid/v4';
 
-import * as MessageActions from '@Actions/MessageActions';
-import Messages from '@Components/Messages';
+import * as MessageActions from '@actions/MessageActions';
+import accelerateStarterPng from '../src/assets/accelerate-starter.png';
+import Messages from '@components/Messages';
 
 const mapDispatchToProps = {
   createMessage: MessageActions.createMessage.request,
@@ -35,7 +36,7 @@ export const HomePage: React.FC<typeof mapDispatchToProps> = ({
               alt="Accelerate Starter Logo"
               rounded
               size="large"
-              src="/static/accelerate-starter.png"
+              src={accelerateStarterPng}
             />
           </Grid.Column>
         </Grid.Row>

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { default as AuthModal } from '@Components/AuthModal';
-import { default as Header } from '@Components/Header';
+import { default as AuthModal } from '@components/AuthModal';
+import { default as Header } from '@components/Header';
 
 interface IProps extends React.Props<{}> {
   getWidth(): number;
