@@ -7,8 +7,6 @@ import { default as uuid } from 'uuid/v4';
 import * as MessageActions from '@actions/MessageActions';
 import Messages from '@components/Messages';
 
-import accelerateStarterPng from '../src/assets/accelerate-starter.png';
-
 const mapDispatchToProps = {
   createMessage: MessageActions.createMessage.request,
   getMessages: MessageActions.getMessages.request
@@ -37,7 +35,7 @@ export const HomePage: React.FC<typeof mapDispatchToProps> = ({
               alt="Accelerate Starter Logo"
               rounded
               size="large"
-              src={accelerateStarterPng}
+              src={"/assets/accelerate-starter.png"}
             />
           </Grid.Column>
         </Grid.Row>
