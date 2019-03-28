@@ -5,8 +5,9 @@ import { Button, Grid, Header, Image, Segment } from 'semantic-ui-react';
 import { default as uuid } from 'uuid/v4';
 
 import * as MessageActions from '@actions/MessageActions';
-import accelerateStarterPng from '../src/assets/accelerate-starter.png';
 import Messages from '@components/Messages';
+
+import accelerateStarterPng from '../src/assets/accelerate-starter.png';
 
 const mapDispatchToProps = {
   createMessage: MessageActions.createMessage.request,
