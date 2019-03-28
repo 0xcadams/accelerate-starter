@@ -1,6 +1,6 @@
 {
   "name": "@accelerate-starter/api",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "FeathersJS-based API for accelerate-starter.",
   "main": "src",
   "directories": {
@@ -18,7 +18,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@accelerate-starter/core": "^0.0.1",
+    "@accelerate-starter/core": "^0.1.0",
     "@feathersjs/authentication": "^2.1.13",
     "@feathersjs/authentication-jwt": "^2.0.7",
     "@feathersjs/authentication-local": "^1.2.7",
