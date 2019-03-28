@@ -29,8 +29,3 @@ stages:
   - test
   - release
   - deploy
-
-cache:
-  directories:
-    - packages/web/.next
-    - node_modules
