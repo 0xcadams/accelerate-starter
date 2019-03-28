@@ -35,7 +35,7 @@ export const HomePage: React.FC<typeof mapDispatchToProps> = ({
               alt="Accelerate Starter Logo"
               rounded
               size="large"
-              src={"/assets/accelerate-starter.png"}
+              src={'/static/accelerate-starter.png'}
             />
           </Grid.Column>
         </Grid.Row>
