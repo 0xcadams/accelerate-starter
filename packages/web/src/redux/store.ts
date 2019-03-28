@@ -3,8 +3,8 @@ import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import reduxPromiseMiddleware from 'redux-promise-middleware';
 import reduxSaga from 'redux-saga';
 
-import { IStore, rootReducer } from '@Reducers';
-import { rootSaga } from '@Sagas';
+import { IStore, rootReducer } from '@reducers';
+import { rootSaga } from '@sagas';
 
 export default (initialState: IStore) => {
   const sagaMiddleware = reduxSaga();

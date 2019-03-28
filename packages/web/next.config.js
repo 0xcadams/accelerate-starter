@@ -6,13 +6,22 @@ const withSass = require('@zeit/next-sass');
 const withBundleAnalyzer = require('@zeit/next-bundle-analyzer');
 const withOffline = require('next-offline');
 const nextRuntimeDotenv = require('next-runtime-dotenv');
+const withOptimizedImages = require('next-optimized-images');
 
 const withConfig = nextRuntimeDotenv({
   public: ['API_URL']
 });
 
 module.exports = withPlugins(
-  [[withTypescript], [withCSS], [withSass], [withBundleAnalyzer], [withConfig], [withOffline]],
+  [
+    [withOptimizedImages],
+    [withTypescript],
+    [withCSS],
+    [withSass],
+    [withBundleAnalyzer],
+    [withConfig],
+    [withOffline]
+  ],
   {
     target: 'serverless',
     analyzeServer: ['server', 'both'].includes(process.env.BUNDLE_ANALYZE),

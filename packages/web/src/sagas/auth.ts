@@ -1,5 +1,5 @@
-import * as AuthActions from '@Actions/AuthActions';
-import * as api from '@Api';
+import * as AuthActions from '@actions/AuthActions';
+import * as api from '@api';
 import { all, call, fork, put, take, takeEvery } from 'redux-saga/effects';
 
 import { IUser } from '@accelerate-starter/core';

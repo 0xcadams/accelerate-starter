@@ -6,8 +6,8 @@ import { SingletonRouter, withRouter } from 'next/router';
 
 import { Button, Container, Dropdown, Menu, Segment } from 'semantic-ui-react';
 
-import * as AuthActions from '@Actions/AuthActions';
-import { IAuthModalState, IStore } from '@Reducers';
+import * as AuthActions from '@actions/AuthActions';
+import { IAuthModalState, IStore } from '@reducers';
 
 interface IHeaderProps {
   getWidth(): number;

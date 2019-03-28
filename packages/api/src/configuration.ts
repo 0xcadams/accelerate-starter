@@ -30,8 +30,9 @@ export const config = (app: Application<string>) => {
       service: 'v1/user',
       strategies: ['jwt', 'local']
     },
-    mongodb:
-      process.env.MONGODB_URL || 'mongodb://localhost:27017/accelerate-starter',
+    mongodb: isProd
+      ? process.env.MONGODB_URL
+      : 'mongodb://localhost:27017/accelerate-starter',
     paginate: { default: 10, max: 50 },
     port: process.env.PORT || 3030
   };

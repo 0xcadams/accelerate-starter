@@ -32,6 +32,7 @@
     "lh": "lighthousebot",
     "lint": "lerna run lint --stream",
     "postinstall": "lerna run build --scope @accelerate-starter/core",
+    "release": "lerna version --conventional-commits --github-release --yes",
     "start": "lerna run start --stream",
     "test:integration": "lerna run test:integration --stream",
     "test:integration:open": "lerna run test:integration:open --stream",

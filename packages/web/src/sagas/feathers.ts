@@ -1,6 +1,6 @@
 import { IMessage } from '@accelerate-starter/core';
-import { createMessageIncoming } from '@Actions/MessageActions';
-import { messageService } from '@Api';
+import { createMessageIncoming } from '@actions/MessageActions';
+import { messageService } from '@api';
 import { Service } from '@feathersjs/feathers';
 import { eventChannel } from 'redux-saga';
 import { all, call, fork, put, take } from 'redux-saga/effects';
