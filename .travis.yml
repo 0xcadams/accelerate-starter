@@ -17,8 +17,18 @@ jobs:
       script:
         - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then yarn release; fi
 
+    - stage: deploy
+      if: (tag =~ ^v) AND (branch = master)
+      language: node_js
+      node_js: '8.10.0'
+      script:
+        - export CYPRESS_BASE_URL=$(now -t $NOW_TOKEN --target production)
+        - yarn test:integration
+
 stages:
   - test
+  - release
+  - deploy
 
 cache:
   directories:
