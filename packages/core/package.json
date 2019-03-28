@@ -2,6 +2,7 @@
   "name": "@accelerate-starter/core",
   "version": "0.0.1",
   "description": "Library to share code between accelerate-starter applications.",
+  "private": true,
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "license": "MIT",

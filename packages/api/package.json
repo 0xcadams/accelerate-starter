@@ -2,6 +2,7 @@
   "name": "@accelerate-starter/api",
   "version": "0.0.1",
   "description": "FeathersJS-based API for accelerate-starter.",
+  "private": true,
   "main": "src",
   "directories": {
     "lib": "src"

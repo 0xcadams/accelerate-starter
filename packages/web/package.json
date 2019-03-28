@@ -2,6 +2,7 @@
   "name": "@accelerate-starter/web",
   "version": "0.0.1",
   "description": "NextJS-based web application for accelerate-starter.",
+  "private": true,
   "main": "app/server.js",
   "license": "MIT",
   "scripts": {

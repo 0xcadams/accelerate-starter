@@ -1,5 +1,9 @@
 README.md
 .next
-node_modules
+node_modules/
 cypress
 **.test.**
+docker-compose.yml
+.travis.yml
+*.json
+*.md
