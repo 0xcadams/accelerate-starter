@@ -1,6 +1,6 @@
 {
   "name": "@accelerate-starter/web",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "NextJS-based web application for accelerate-starter.",
   "main": "app/server.js",
   "license": "MIT",
@@ -19,7 +19,7 @@
     "test:integration:open": "cypress open"
   },
   "dependencies": {
-    "@accelerate-starter/core": "^0.1.0",
+    "@accelerate-starter/core": "^0.2.0",
     "@feathersjs/authentication-client": "^1.0.11",
     "@feathersjs/rest-client": "^1.4.7",
     "@feathersjs/socketio-client": "^1.2.1",
