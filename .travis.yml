@@ -16,7 +16,7 @@ jobs:
       language: node_js
       node_js: 'node'
       script:
-        - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then CYPRESS_BASE_URL=$(now -t $NOW_TOKEN --target production) && yarn test:integration; fi'
+        - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then export CYPRESS_BASE_URL=$(now -t $NOW_TOKEN --target production) && yarn test:integration; fi'
 
 stages:
   - test
