@@ -8,8 +8,14 @@
     "JWT_AUDIENCE": "https://accelerate-starter.com"
   },
   "routes": [
-    { "src": "/socket.io/(.*)", "dest": "packages/api/src/app.ts" },
-    { "src": "/api/(.*)", "dest": "packages/api/src/app.ts" },
+    {
+      "src": "/socket.io/(.*)",
+      "dest": "packages/api/src/app.ts"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "packages/api/src/app.ts"
+    },
     {
       "src": "^/service-worker.js$",
       "dest": "/packages/web/_next/static/service-worker.js",
@@ -18,7 +24,13 @@
         "service-worker-allowed": "/"
       }
     },
-    { "src": "/(.*)", "dest": "/packages/web/$1" }
+    {
+      "src": "/(.*)",
+      "dest": "/packages/web/$1",
+      "headers": {
+        "cache-control": "public, max-age=43200, immutable"
+      }
+    }
   ],
   "builds": [
     {
