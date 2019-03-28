@@ -11,6 +11,12 @@ jobs:
         - yarn test:integration
         - if [ ! -z "$TRAVIS_PULL_REQUEST_SLUG" ] ; then yarn lh -- --perf=70 --seo=90 --a11y=80 --bp=80 --pwa=100 $CYPRESS_BASE_URL ; fi
 
+    - stage: release
+      language: node_js
+      node_js: '8.10.0'
+      script:
+        - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then yarn release; fi
+
 stages:
   - test
 

@@ -1,6 +1,6 @@
 {
   "name": "@accelerate-starter/web",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "NextJS-based web application for accelerate-starter.",
   "main": "app/server.js",
   "license": "MIT",
