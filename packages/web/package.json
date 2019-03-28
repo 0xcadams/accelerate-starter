@@ -19,7 +19,7 @@
     "test:integration:open": "cypress open"
   },
   "dependencies": {
-    "@accelerate-starter/core": "^0.1.0",
+    "@accelerate-starter/core": "^0.0.1",
     "@feathersjs/authentication-client": "^1.0.11",
     "@feathersjs/rest-client": "^1.4.7",
     "@feathersjs/socketio-client": "^1.2.1",
