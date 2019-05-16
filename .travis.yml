@@ -2,7 +2,7 @@ jobs:
   include:
     - stage: test
       language: node_js
-      node_js: 'node'
+      node_js: 'stable'
       script:
         - yarn install --audit
         - yarn test
@@ -14,7 +14,7 @@ jobs:
     - stage: release
       if: branch = master
       language: node_js
-      node_js: 'node'
+      node_js: 'stable'
       script:
         - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then export CYPRESS_BASE_URL=$(now -t $NOW_TOKEN --target production) && yarn test:integration; fi'
 
