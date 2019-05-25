@@ -31,7 +31,7 @@
     "email-validator": "^2.0.4",
     "http-proxy-middleware": "^0.19.1",
     "imagemin-mozjpeg": "^8.0.0",
-    "imagemin-optipng": "^6.0.0",
+    "imagemin-optipng": "^7.0.0",
     "imagemin-svgo": "^7.0.0",
     "isomorphic-unfetch": "^3.0.0",
     "mobile-detect": "^1.4.3",
