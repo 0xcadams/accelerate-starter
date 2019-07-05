@@ -53,7 +53,7 @@
     "@types/passport-facebook": "^2.1.8",
     "@types/passport-google-oauth2": "^0.1.2",
     "@types/winston": "^2.4.4",
-    "feathers-memory": "^3.0.2",
+    "feathers-memory": "^4.0.0",
     "source-map-support": "^0.5.11"
   }
 }
