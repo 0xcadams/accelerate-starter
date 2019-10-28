@@ -54,6 +54,6 @@
     "@types/passport-google-oauth2": "^0.1.2",
     "@types/winston": "^2.4.4",
     "feathers-memory": "^3.0.2",
-    "source-map-support": "^0.5.11"
+    "source-map-support": "^0.5.15"
   }
 }
