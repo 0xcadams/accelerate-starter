@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@accelerate-starter/core": "^0.2.0",
-    "@feathersjs/authentication": "^2.1.13",
+    "@feathersjs/authentication": "^4.4.0",
     "@feathersjs/authentication-jwt": "^2.0.7",
     "@feathersjs/authentication-local": "^1.2.7",
     "@feathersjs/errors": "^3.3.4",
