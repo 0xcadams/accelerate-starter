@@ -23,7 +23,7 @@
     "@accelerate-starter/core": "^0.2.0",
     "@feathersjs/authentication-client": "^1.0.11",
     "@feathersjs/rest-client": "^1.4.7",
-    "@feathersjs/socketio-client": "^1.2.1",
+    "@feathersjs/socketio-client": "^4.4.1",
     "@zeit/next-bundle-analyzer": "^0.1.2",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
