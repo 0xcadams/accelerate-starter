@@ -26,7 +26,7 @@
     "@feathersjs/errors": "^3.3.4",
     "@feathersjs/express": "^1.2.7",
     "@feathersjs/feathers": "^3.2.3",
-    "@feathersjs/socketio": "^3.2.7",
+    "@feathersjs/socketio": "^4.5.1",
     "compression": "^1.7.3",
     "cors": "^2.8.5",
     "feathers-mongoose": "^7.0.0",
