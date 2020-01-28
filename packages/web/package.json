@@ -71,7 +71,7 @@
     "@types/next-redux-wrapper": "^2.0.2",
     "@types/react": "^16.8.8",
     "@types/semantic-ui": "^2.2.6",
-    "@types/uuid": "^3.4.4",
+    "@types/uuid": "^3.4.7",
     "autoprefixer": "^9.4.3",
     "babel-plugin-module-resolver": "^3.2.0",
     "cypress": "3.3.0",
