@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="packages/web/static/accelerate-starter.png" width="200" title="Accelerate Starter">
+  <img src="packages/web/public/accelerate-starter.png" width="200" title="Accelerate Starter">
   <h3>
     An opinionated universal web app + API starter kit to facilitate rapid and scalable development using NextJS, FeathersJS, and MongoDB.
   </h3>
