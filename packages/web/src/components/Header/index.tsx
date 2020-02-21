@@ -1,128 +1,205 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { default as Link } from 'next/link';
 import { SingletonRouter, withRouter } from 'next/router';
 
-import { Button, Container, Dropdown, Menu, Segment } from 'semantic-ui-react';
+import AppBar from '@material-ui/core/AppBar';
+import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import {
+  createStyles,
+  Theme,
+  withStyles,
+  WithStyles
+} from '@material-ui/core/styles';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 
-import * as AuthActions from '@actions/AuthActions';
-import { IAuthModalState, IStore } from '@reducers';
+import * as UserActions from '@actions/UserActions';
+import logoSvg from '@assets/logo.svg';
+import Link from '@components/Link';
+import { IStore, IUserState } from '@reducers';
 
-interface IHeaderProps {
-  getWidth(): number;
-}
+import AuthMenu from './AuthMenu';
+import UnauthMenu from './UnauthMenu';
+
+const styles = (theme: Theme) =>
+  createStyles({
+    appBarSpacer: theme.mixins.toolbar,
+    toolBar: {
+      width: '100%',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      maxWidth: theme.breakpoints.values.lg
+    },
+    appBar: {
+      zIndex: theme.zIndex.drawer + 1
+    },
+    loginButton: {
+      marginRight: theme.spacing(2),
+      [theme.breakpoints.down('sm')]: {
+        marginRight: 0
+      }
+    },
+    navigationContainer: {
+      marginRight: theme.spacing(10),
+      [theme.breakpoints.between('xs', 'sm')]: {
+        marginRight: theme.spacing(2)
+      },
+      [theme.breakpoints.down('xs')]: {
+        marginRight: 0
+      }
+    },
+    logoContainer: {
+      cursor: 'pointer',
+      display: 'flex',
+      alignItems: 'center'
+    },
+    logoImage: {
+      height: 35,
+      marginRight: theme.spacing(1)
+    },
+    progress: {
+      marginRight: theme.spacing(2)
+    },
+    authButtons: {
+      marginLeft: 'auto',
+      textAlign: 'right'
+    },
+    headerButton: {
+      marginLeft: theme.spacing(2),
+      [theme.breakpoints.down('sm')]: {
+        marginLeft: theme.spacing(1)
+      },
+      [theme.breakpoints.down('xs')]: {
+        marginLeft: 0
+      }
+    },
+    toolbar: theme.mixins.toolbar
+  });
 
 const mapDispatchToProps = {
-  authenticateUser: AuthActions.authenticateUser.request,
-  createUser: AuthActions.createUser.request,
-  logOutUser: AuthActions.logOutUser.request,
-  toggleAuthModal: AuthActions.toggleAuthModal
+  authenticateUser: UserActions.authenticateUser.request,
+  createUser: UserActions.createUser.request,
+  logOutUser: UserActions.logOutUser.request,
+  toggleAuthModal: UserActions.toggleAuthModal
 };
 
-type IProps = IAuthModalState &
-  typeof mapDispatchToProps &
-  IHeaderProps & { router: SingletonRouter };
+type IProps = IUserState &
+  WithStyles<typeof styles> &
+  typeof mapDispatchToProps & {
+    router: SingletonRouter;
+    isMobile: boolean;
+  };
+
+const tabs = [
+  {
+    title: 'Contact',
+    href: '/contact'
+  }
+];
+
+const authTabs = [
+  {
+    title: 'Contact',
+    href: '/contact'
+  }
+];
 
 const Header: React.FC<IProps> = ({
-  children,
   user,
   isFetching,
-  router: { pathname },
   logOutUser,
-  toggleAuthModal
-}) => (
-  <React.Fragment>
-    <Segment
-      inverted
-      textAlign="center"
-      style={{ padding: '1em 0em' }}
-      vertical
-    >
-      <Menu fixed="top" size="large">
-        <Container>
-          <Link prefetch href="/">
-            <Menu.Item as="a" active={pathname === '/' || pathname === ''}>
-              Home
-            </Menu.Item>
+  toggleAuthModal,
+  classes,
+  isMobile
+}) => {
+  const logIn = () =>
+    toggleAuthModal({
+      showModal: 'login'
+    });
+
+  const signUp = () =>
+    toggleAuthModal({
+      showModal: 'signup'
+    });
+
+  return (
+    <>
+      <AppBar position="fixed" className={classes.appBar}>
+        <Toolbar color="inherit" className={classes.toolBar}>
+          <Link href="/">
+            <div className={classes.logoContainer}>
+              <img
+                alt="Accelerate Starter Logo"
+                className={classes.logoImage}
+                src={logoSvg}
+              />
+              {!isMobile && (
+                <Typography variant="h5" color="inherit">
+                  Accelerate
+                </Typography>
+              )}
+            </div>
           </Link>
-          <Link prefetch href="/about">
-            <Menu.Item as="a" active={pathname === '/about'}>
-              About
-            </Menu.Item>
-          </Link>
-          <Menu.Item position="right">
-            {!user ? (
-              <React.Fragment>
+
+          <div className={classes.authButtons}>
+            <span className={classes.navigationContainer}>
+              {!isFetching &&
+                (user ? authTabs : tabs).map((e) => (
+                  <Link key={e.title} href={e.href}>
+                    <Button
+                      aria-label={e.title}
+                      className={classes.headerButton}
+                      color="inherit"
+                    >
+                      {e.title}
+                    </Button>
+                  </Link>
+                ))}
+            </span>
+
+            {isFetching ? (
+              <CircularProgress className={classes.progress} color="inherit" />
+            ) : user ? (
+              <AuthMenu user={user} logOutUser={() => logOutUser()} />
+            ) : isMobile ? (
+              <UnauthMenu
+                logIn={logIn}
+                signUp={signUp}
+                isFetching={isFetching}
+              />
+            ) : (
+              <>
                 <Button
                   id="login-btn"
-                  loading={isFetching}
-                  onClick={() =>
-                    toggleAuthModal({
-                      isSignUp: false,
-                      showModal: true
-                    })
-                  }
+                  aria-label="Login Button"
+                  className={classes.loginButton}
+                  onClick={logIn}
+                  color="inherit"
                 >
-                  Log in
+                  Login
                 </Button>
                 <Button
-                  className="signup-btn"
-                  loading={isFetching}
-                  primary
-                  style={{ marginLeft: '0.5em' }}
-                  onClick={() =>
-                    toggleAuthModal({
-                      isSignUp: true,
-                      showModal: true
-                    })
-                  }
+                  id="sign-up-btn"
+                  aria-label="Sign Up Button"
+                  variant={'contained'}
+                  color={'secondary'}
+                  onClick={signUp}
                 >
                   Sign Up
                 </Button>
-              </React.Fragment>
-            ) : (
-              <Dropdown
-                id="user-avatar-btn"
-                loading={isFetching}
-                icon="user"
-                pointing="top right"
-                button
-                direction="left"
-                className="icon"
-              >
-                <Dropdown.Menu>
-                  <Dropdown.Header content={user.email} />
-                  <Dropdown.Divider />
-                  <Dropdown.Item id="account-btn">Account</Dropdown.Item>
-                  <Dropdown.Item id="sign-out-btn" onClick={() => logOutUser()}>
-                    Sign Out
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+              </>
             )}
-            <Button
-              aria-label="GitHub Link"
-              id="github-btn"
-              style={{ marginLeft: '0.5em' }}
-              icon="github"
-              as="a"
-              target="_blank"
-              rel="noopener"
-              href="https://github.com/chase-adams/accelerate-starter"
-            />
-          </Menu.Item>
-        </Container>
-      </Menu>
-    </Segment>
+          </div>
+        </Toolbar>
+      </AppBar>
+      <div className={classes.toolbar} />
+    </>
+  );
+};
 
-    {children}
-  </React.Fragment>
-);
-
-export default withRouter(
-  connect(
-    (state: IStore): IAuthModalState => state.auth,
-    mapDispatchToProps
-  )(Header)
-);
+export default connect(
+  (state: IStore): IUserState => state.user,
+  mapDispatchToProps
+)(withRouter(withStyles(styles)(Header)));

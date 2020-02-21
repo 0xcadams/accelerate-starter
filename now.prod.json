@@ -1,0 +1,70 @@
+{
+  "version": 2,
+  "scope": "accelerate-starter",
+  "alias": ["accelerate-starter.com"],
+  "env": {
+    "FEATHERS_AUTH_SECRET": "@accelerate-starter-prod_authentication-secret",
+    "JWT_AUDIENCE": "https://accelerate-starter.com",
+    "MONGODB_URL": "@accelerate-starter-prod_mongodb-url",
+    "NODE_ENV": "production",
+    "SENDGRID_API_KEY": "@accelerate-starter-prod_sendgrid-api-key",
+    "SUPPORT_EMAIL": "support@accelerate-starter.com"
+  },
+  "build": {
+    "env": {
+      "GOOGLE_ANALYTICS_ID": "UA-116061410-1"
+    }
+  },
+  "routes": [
+    {
+      "src": "/socket.io/(.*)",
+      "dest": "packages/api/src/app.ts"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "packages/api/src/app.ts"
+    },
+    {
+      "src": "^/service-worker.js$",
+      "dest": "/packages/web/_next/service-worker.js",
+      "headers": {
+        "cache-control": "public, max-age=43200, immutable",
+        "service-worker-allowed": "/"
+      }
+    },
+    {
+      "src": "/(_next/static/.*)",
+      "dest": "/packages/web/$1",
+      "headers": {
+        "cache-control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "src": "/micromarket/(.*)",
+      "dest": "/packages/web/micromarket/[id]",
+      "headers": {
+        "cache-control": "no-cache"
+      }
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/packages/web/$1",
+      "headers": {
+        "cache-control": "no-cache"
+      }
+    }
+  ],
+  "builds": [
+    {
+      "src": "packages/api/src/app.ts",
+      "use": "@now/node",
+      "config": {
+        "includeFiles": ["packages/api/src/emails/**"]
+      }
+    },
+    {
+      "src": "packages/web/next.config.js",
+      "use": "@now/next"
+    }
+  ]
+}

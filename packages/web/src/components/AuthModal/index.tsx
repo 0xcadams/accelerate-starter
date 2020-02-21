@@ -1,186 +1,71 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import * as emailValidator from 'email-validator';
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Message,
-  Modal
-} from 'semantic-ui-react';
+import Dialog from '@material-ui/core/Dialog';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import { createStyles, withStyles, WithStyles } from '@material-ui/core/styles';
 
-import * as AuthActions from '@actions/AuthActions';
-import { IAuthModalState, IStore } from '@reducers';
-
-const passwordLengthMinimum = 6;
+import * as UserActions from '@actions/UserActions';
+import UserDataForm from '@components/AuthModal/UserDataForm';
+import { IStore, IUserState } from '@reducers';
 
 const mapDispatchToProps = {
-  createUser: AuthActions.createUser.request,
-  authenticateUser: AuthActions.authenticateUser.request,
-  toggleAuthModal: AuthActions.toggleAuthModal
+  authenticateUser: UserActions.authenticateUser.request,
+  createUser: UserActions.createUser.request,
+  toggleAuthModal: UserActions.toggleAuthModal
 };
 
-export const AuthModal: React.FC<
-  typeof mapDispatchToProps & IAuthModalState
-> = ({
-  createUser,
-  authenticateUser,
-  isModalShowing,
-  isSignUp,
-  toggleAuthModal,
-  isFetching,
-  error
-}) => {
-  const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState({ value: '', error: '' });
-  const [password, setPassword] = React.useState({ value: '', error: '' });
-
-  const requestError =
-    error &&
-    (error.code === 409
-      ? 'Email already exists.'
-      : error.code === 401
-      ? 'Incorrect login.'
-      : '');
-
-  const displayError =
-    (isSignUp && (password.error || email.error)) ||
-    (!name && !password.value && !email.value && requestError); // only show error text after a user is authenticated
-
-  const onChangeEmail = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    event.preventDefault();
-
-    const newEmail = event.target.value;
-    const isEmailValid = emailValidator.validate(newEmail);
-
-    setEmail({
-      error: !isEmailValid ? 'Email must be valid.' : '',
-      value: newEmail
-    });
-  };
-
-  const onChangeName = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    event.preventDefault();
-    setName(event.target.value);
-  };
-
-  const onChangePassword = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ): void => {
-    event.preventDefault();
-
-    const newPassword = event.target.value;
-
-    setPassword({
-      error:
-        newPassword.length < passwordLengthMinimum
-          ? `Password must be at least ${passwordLengthMinimum} characters.`
-          : '',
-      value: newPassword
-    });
-  };
-
-  const onSubmit = (): void => {
-    if (!password.error && !email.error) {
-      if (isSignUp) {
-        createUser({ name, email: email.value, password: password.value });
-      } else {
-        authenticateUser({ email: email.value, password: password.value });
-      }
-
-      setName('');
-      setEmail({ value: '', error: '' });
-      setPassword({ value: '', error: '' });
+const styles = () =>
+  createStyles({
+    dialogContentWrapper: {
+      position: 'relative'
+    },
+    progress: {
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      marginTop: -12,
+      marginLeft: -12
     }
-  };
+  });
+
+export const AuthModal: React.FC<typeof mapDispatchToProps &
+  WithStyles<typeof styles> &
+  IUserState> = ({
+  isModalShowing,
+  toggleAuthModal,
+  authenticateUser,
+  createUser
+}) => {
+  const onClose = () => toggleAuthModal({ showModal: 'none' });
 
   return (
-    <Modal
-      size="tiny"
-      open={isModalShowing}
-      onClose={() => toggleAuthModal({ showModal: false })}
+    <Dialog
+      aria-labelledby="login-dialog"
+      open={isModalShowing !== 'none'}
+      onClose={onClose}
     >
-      <Modal.Header>{isSignUp ? 'Sign Up' : 'Log In'}</Modal.Header>
-      <Modal.Content>
-        <Modal.Description>
-          <Grid
-            textAlign="center"
-            style={{ height: '100%' }}
-            verticalAlign="middle"
-          >
-            <Grid.Column>
-              <Form
-                onSubmit={onSubmit}
-                loading={isFetching}
-                error={Boolean(displayError)}
-                size="large"
-              >
-                {isSignUp && (
-                  <Form.Input
-                    id="auth-modal-name"
-                    value={name}
-                    fluid
-                    icon="user"
-                    iconPosition="left"
-                    placeholder="Name"
-                    onChange={onChangeName}
-                  />
-                )}
-                <Form.Input
-                  id="auth-modal-email"
-                  value={email.value}
-                  error={Boolean(email.error)}
-                  fluid
-                  icon="at"
-                  iconPosition="left"
-                  placeholder="E-mail address"
-                  type="email"
-                  onChange={onChangeEmail}
-                />
-                <Form.Input
-                  id="auth-modal-password"
-                  value={password.value}
-                  error={Boolean(password.error)}
-                  fluid
-                  icon="lock"
-                  iconPosition="left"
-                  placeholder="Password"
-                  type="password"
-                  onChange={onChangePassword}
-                />
+      <DialogTitle id="form-dialog-title">
+        {isModalShowing === 'signup' ? 'Sign up!' : 'Log In'}
+      </DialogTitle>
 
-                <Message error content={displayError} />
-
-                {isSignUp && (
-                  <Form.Field>
-                    <Checkbox
-                      id="auth-modal-toc"
-                      label="I agree to the Terms and Conditions"
-                    />
-                  </Form.Field>
-                )}
-
-                <Button
-                  id="auth-modal-ok-btn"
-                  color="teal"
-                  icon="checkmark"
-                  content="OK"
-                  size="large"
-                />
-              </Form>
-            </Grid.Column>
-          </Grid>
-        </Modal.Description>
-      </Modal.Content>
-    </Modal>
+      <UserDataForm
+        onClose={onClose}
+        onSubmit={(user) => {
+          if (isModalShowing === 'signup') {
+            createUser(user);
+          } else {
+            authenticateUser(user);
+          }
+        }}
+      />
+    </Dialog>
   );
 };
 
-const mapStateToProps = (state: IStore): IAuthModalState => state.auth;
+const mapStateToProps = (state: IStore): IUserState => state.user;
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AuthModal);
+)(withStyles(styles)(AuthModal));

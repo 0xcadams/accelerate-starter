@@ -1,0 +1,32 @@
+name: stage-deploy-and-integration-test
+
+on: [pull_request]
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: yarn install, lint, and test
+        run: |
+          yarn install
+          export CYPRESS_BASE_URL=$(./node_modules/.bin/now --confirm -t $NOW_TOKEN)
+
+          PAYLOAD=$(echo '{}' | jq --arg body "The latest Accelerate Starter code was deployed to $CYPRESS_BASE_URL. Please visit this page to manually test before merging into master." '.body = $body')
+          COMMENTS_URL=$(cat "$GITHUB_EVENT_PATH" | jq -r .pull_request.comments_url)
+          curl -s -S -H "authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" --header "Content-Type: application/json" --data "$PAYLOAD" "$COMMENTS_URL" > /dev/null
+
+          yarn test:integration
+        env:
+          NOW_TOKEN: ${{ secrets.NOW_TOKEN }}
+          CYPRESS_TEST_USER_PASS: ${{ secrets.CYPRESS_TEST_USER_PASS }}
+          CYPRESS_UNLOCKED_USER_PASS: ${{ secrets.CYPRESS_UNLOCKED_USER_PASS }}

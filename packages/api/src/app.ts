@@ -1,70 +1,96 @@
-import { default as feathersExpress } from '@feathersjs/express';
-import compression from 'compression';
-import cors from 'cors';
-import helmet from 'helmet';
-
+import express from '@feathersjs/express';
 import feathers from '@feathersjs/feathers';
 import socketio from '@feathersjs/socketio';
 
+import compression from 'compression';
+import cors from 'cors';
+import expressUseragent from 'express-useragent';
+import helmet from 'helmet';
+import requestIp from 'request-ip';
+
+import * as Sentry from '@sentry/node';
+
 import { config as globalConfig } from '@accelerate-starter/core';
 
-import { logger } from './logger';
+import { Application } from './declarations';
 
-import { hooks } from './app.hooks';
-import { channels } from './channels';
-import { middleware } from './middleware';
-import { services } from './services';
+import logger from './logger';
 
-import { auth } from './authentication';
-import { config } from './configuration';
-import { mongooseClient } from './mongoose';
+import appHooks from './app.hooks';
+import channels from './channels';
+import configuration from './configuration';
+import middleware from './middleware';
+import services from './services';
 
-process.on('unhandledRejection', (reason, p) =>
-  logger.error('Unhandled Rejection at: Promise ', p, reason)
-);
+import authentication from './authentication';
+import mongoose from './mongoose';
 
-const app = feathersExpress(feathers());
+Sentry.init({
+  dsn: 'https://407fdae4fbb14d939c798adb846eb49f@sentry.io/2690513',
+  release: `@accelerate-starter/api@${process.env.npm_package_version}`
+});
+
+const app: Application = express(feathers());
+
+// The request handler must be the first middleware on the app
+app.use(Sentry.Handlers.requestHandler());
 
 // Load app configuration
-app.configure(config);
+app.configure(configuration);
 
 // Enable security, CORS, compression, favicon and body parsing
-app.use(helmet());
+if (process.env.NODE_ENV === 'production') {
+  app.use(helmet());
+}
 app.use(cors());
 app.use(compression());
-app.use(feathersExpress.json());
-app.use(feathersExpress.urlencoded({ extended: true }));
-// app.use(favicon(path.join(app.get("public"), "favicon.ico")));
-// Host the public folder
-// app.use("/", express.static(app.get("public")));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Enable IP and user agent parsing from request
+app.use(requestIp.mw());
+app.use(expressUseragent.express());
+app.use((req, _res, next) => {
+  req.feathers = {
+    ...req.feathers,
+    clientIp: req.clientIp,
+    clientUserAgent: req.useragent
+  };
+  next();
+});
 
 // Set up Plugins and providers
 if (globalConfig.useSocketIo) {
   app.configure(socketio());
 } else {
-  app.configure(feathersExpress.rest());
+  app.configure(express.rest());
 }
 
-app.configure(mongooseClient);
+app.configure(mongoose);
 
 // Configure other middleware (see `middleware/index.js`)
 app.configure(middleware);
-app.configure(auth);
+app.configure(authentication);
 // Set up our services (see `services/index.js`)
 app.configure(services);
 // Set up event channels (see channels.js)
 app.configure(channels);
 
-// Configure a middleware for 404s and the error handler
-app.use(feathersExpress.notFound());
-app.use(feathersExpress.errorHandler({ logger }));
+// The error handler must be before any other error middleware and after all controllers
+app.use(Sentry.Handlers.errorHandler());
 
-app.hooks(hooks);
+// Configure a middleware for 404s and the error handler
+app.use(express.notFound());
+app.use(express.errorHandler({ logger }));
+
+app.hooks(appHooks);
 
 let api = app;
 
 if (!globalConfig.useSocketIo) {
-  api = feathersExpress(feathers()).use('/api', app);
+  api = express(feathers());
+  api.use('/api', app);
+
   app.setup(api);
 }
 

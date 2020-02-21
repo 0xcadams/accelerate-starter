@@ -1,5 +1,6 @@
 {
-  "presets": ["next/babel", "@zeit/next-typescript/babel"],
+  "presets": ["next/babel"],
+
   "plugins": [
     [
       "module-resolver",
@@ -10,6 +11,7 @@
           "@api": "./src/api",
           "@assets": "./src/assets",
           "@components": "./src/components",
+          "@errors": "./src/errors",
           "@reducers": "./src/reducers",
           "@redux": "./src/redux",
           "@sagas": "./src/sagas"

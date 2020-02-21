@@ -1,13 +1,13 @@
 import app from './app';
-import { logger } from './logger';
+import logger from './logger';
 
-const port = app.get('port') || 3030;
+const port = process.env.PORT || 3030;
 const server = app.listen(port);
 
 server.on('listening', () =>
   logger.info(
     'Feathers application started on http://%s:%d',
-    app.get('host') || 'localhost',
+    process.env.HOST || 'localhost',
     port
   )
 );

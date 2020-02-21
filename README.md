@@ -4,7 +4,7 @@
     An opinionated universal web app + API starter kit to facilitate rapid and scalable development using NextJS, FeathersJS, and MongoDB.
   </h3>
   <div>
-    Accelerate is a starter project to enable a team to quickly jump past common hurdles such as user authentication, unit and integration tests, CI/CD, and tooling to begin solving their core business problems.
+    Accelerate is a starter project to enable a team to quickly jump past common hurdles such as user authentication, password resets, unit and integration tests, CI/CD, and tooling to begin solving their core business problems.
   </div>
   <h2></h2>
   <div>
@@ -31,8 +31,7 @@
     <a href="https://www.cypress.io/">Cypress</a>,
     <a href="https://mochajs.org/">Mocha</a>,
     <a href="https://airbnb.io/enzyme/">Enzyme</a>,
-    <a href="https://www.chaijs.com/">Chai</a>, and
-    <a href="https://github.com/GoogleChromeLabs/lighthousebot">Lighthousebot</a>.
+    <a href="https://www.chaijs.com/">Chai</a>.
     <br />
     <strong>Tooling</strong>
     <br />

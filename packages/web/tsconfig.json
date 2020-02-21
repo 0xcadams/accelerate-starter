@@ -2,10 +2,12 @@
   "extends": "../tsconfig.settings.json",
   "compilerOptions": {
     "outDir": "lib",
-    "jsx": "react",
-    "lib": ["esnext", "dom"],
     "baseUrl": ".",
+    "jsx": "preserve",
+    "lib": ["esnext", "dom"],
+    "types": ["cypress"],
     "paths": {
+      "@accelerate-starter/*": ["../*/src"],
       "@actions": ["./src/actions"],
       "@actions/*": ["./src/actions/*"],
       "@assets": ["./src/assets"],
@@ -14,14 +16,26 @@
       "@api/*": ["./src/api/*"],
       "@components/*": ["./src/components/*"],
       "@components": ["./src/components"],
+      "@errors": ["./src/errors"],
+      "@errors/*": ["./src/errors/*"],
       "@reducers": ["./src/reducers"],
       "@reducers/*": ["./src/reducers/*"],
       "@redux": ["./src/redux"],
       "@redux/*": ["./src/redux/*"],
       "@sagas": ["./src/sagas"],
       "@sagas/*": ["./src/sagas/*"]
-    }
+    },
+    "skipLibCheck": true,
+    "module": "esnext",
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true
   },
   "includes": ["./typings/**/*.d.ts"],
-  "references": [{ "path": "../core" }]
+  "references": [
+    {
+      "path": "../core"
+    }
+  ],
+  "exclude": ["node_modules"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/assets/**/*.json"]
 }

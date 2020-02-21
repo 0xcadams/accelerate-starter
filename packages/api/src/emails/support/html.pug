@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    link(href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet")
+    style
+      include style.css
+
+  body
+    div(class="spacer")
+    div(class="content")
+      div(class="logo")
+        div(class="logo-round-background")
+          a(href=origin)
+            img(alt="Logo" class="logo-image" src=logoSrc)
+      h1 Hi, team!
+      p There was a #{type} message sent from #{email}:
+      p "#{issue}"
+      p Submitted from the domain: #{origin}
+
+      hr
+      div(class="footer")
+        p Sent with ♥ from Valure
+        p Valure, LLC, 6432 East Parkview Drive, Scottsdale, AZ 85257
+    div(class="spacer")
+

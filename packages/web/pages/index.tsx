@@ -1,68 +1,50 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { Button, Grid, Header, Image, Segment } from 'semantic-ui-react';
-import { default as uuid } from 'uuid/v4';
+import { createStyles, WithStyles, withStyles, Theme } from '@material-ui/core';
 
-import * as MessageActions from '@actions/MessageActions';
-import Messages from '@components/Messages';
+import * as UserActions from '@actions/UserActions';
 
-const mapDispatchToProps = {
-  createMessage: MessageActions.createMessage.request,
-  getMessages: MessageActions.getMessages.request
-};
+import Loading from '@components/Loading';
 
-export const HomePage: React.FC<typeof mapDispatchToProps> = ({
-  getMessages,
-  createMessage
-}) => {
-  React.useEffect(() => {
-    getMessages();
+import { IStore, IUserState } from '@reducers';
+
+const styles = (theme: Theme) =>
+  createStyles({
+    landingContainer: {
+      marginTop: theme.spacing(10),
+      marginBottom: theme.spacing(20),
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2),
+      maxWidth: theme.breakpoints.values.md
+    }
   });
 
+const mapDispatchToProps = {
+  toggleAuthModal: UserActions.toggleAuthModal
+};
+
+type IProps = WithStyles<typeof styles> &
+  IUserState &
+  typeof mapDispatchToProps & { pageContext: { isMobile: boolean } };
+
+const HomePage: React.FC<IProps> = ({ classes, isFetching }) => {
   return (
-    <Segment style={{ padding: '8em 0em' }} vertical>
-      <Grid container stackable verticalAlign="middle">
-        <Grid.Row>
-          <Grid.Column width={8}>
-            <Header as="h3" style={{ fontSize: '2em' }}>
-              Messages
-            </Header>
-            <Messages />
-          </Grid.Column>
-          <Grid.Column floated="right" width={4}>
-            <Image
-              alt="Accelerate Starter Logo"
-              rounded
-              size="large"
-              src={'/static/accelerate-starter.png'}
-            />
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column textAlign="center">
-            <Button
-              id="add-message-btn"
-              onClick={() => createMessage({ body: uuid() })}
-              size="huge"
-            >
-              Add a Message
-            </Button>
-            <Button
-              id="get-messages-btn"
-              onClick={() => getMessages()}
-              size="huge"
-            >
-              Get Messages
-            </Button>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
-    </Segment>
+    <>
+      {isFetching ? (
+        <Loading />
+      ) : (
+        <div className={classes.landingContainer}>Hello!</div>
+      )}
+    </>
   );
 };
 
-export default connect(
-  () => ({}),
-  mapDispatchToProps
-)(HomePage);
+export default withStyles(styles)(
+  connect(
+    (state: IStore): IUserState => state.user,
+    mapDispatchToProps
+  )(HomePage)
+);

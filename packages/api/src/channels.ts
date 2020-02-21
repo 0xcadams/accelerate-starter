@@ -1,4 +1,4 @@
-const channels = (app) => {
+export default (app) => {
   if (typeof app.channel !== 'function') {
     // If no real-time functionality has been configured just return
     return;
@@ -62,5 +62,3 @@ const channels = (app) => {
   //   ];
   // });
 };
-
-export { channels };

@@ -1,24 +1,27 @@
-import authentication from '@feathersjs/authentication';
-import authenticationJwt from '@feathersjs/authentication-jwt';
-import authenticationLocal from '@feathersjs/authentication-local';
+import {
+  AuthenticationBaseStrategy,
+  AuthenticationService,
+  JWTStrategy
+} from '@feathersjs/authentication';
+import { LocalStrategy } from '@feathersjs/authentication-local';
+import { ServiceAddons } from '@feathersjs/feathers';
 
-const auth = (app) => {
-  const config = app.get('authentication');
+import { Application } from './declarations';
 
-  // Set up authentication with the secret
-  app.configure(authentication(config));
-  app.configure(authenticationJwt());
-  app.configure(authenticationLocal());
+declare module './declarations' {
+  interface ServiceTypes {
+    authentication: AuthenticationService & ServiceAddons<any>; // tslint:disable-line
+  }
+}
 
-  // The `authentication` service is used to create a JWT.
-  // The before `create` hook registers strategies that can be used
-  // to create a new valid JWT (e.g. local or oauth2)
-  app.service('authentication').hooks({
-    before: {
-      create: [authentication.hooks.authenticate(config.strategies)],
-      remove: [authentication.hooks.authenticate('jwt')]
-    }
-  });
+export default (app: Application) => {
+  const authentication = new AuthenticationService(app);
+
+  authentication.register('jwt', new JWTStrategy());
+  authentication.register(
+    'local',
+    (new LocalStrategy() as unknown) as AuthenticationBaseStrategy // hack around strange hoisting issue
+  );
+
+  app.use('/authentication', authentication);
 };
-
-export { auth };

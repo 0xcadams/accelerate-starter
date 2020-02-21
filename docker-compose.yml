@@ -1,4 +1,4 @@
-version: "2.4"
+version: '2.4'
 
 x-healthcheck-timing: &healthcheck-timing
   interval: 5s
@@ -8,15 +8,14 @@ x-env: &env
   NODE_OPTIONS: --max-old-space-size=400
 
 services:
-
   web:
     build:
       context: packages/web/
     ports:
-      - '3000:3000'
+      - '3443:3443'
     environment:
       <<: *env
-      PORT: 3000
+      PORT: 3443
 
   api:
     build:
@@ -36,5 +35,5 @@ services:
     ports:
       - 27017:27017
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:27017"]
+      test: ['CMD', 'curl', '-f', 'http://localhost:27017']
       <<: *healthcheck-timing
