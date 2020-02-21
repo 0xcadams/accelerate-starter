@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { createStyles, WithStyles, withStyles, Theme } from '@material-ui/core';
+import { createStyles, Theme, WithStyles, withStyles } from '@material-ui/core';
 
 import * as UserActions from '@actions/UserActions';
 
