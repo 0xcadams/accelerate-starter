@@ -14,14 +14,13 @@
     <a href="https://reactjs.org/">React</a>,
     <a href="https://react-redux.js.org/">React Redux</a>,
     <a href="https://redux-saga.js.org/">Redux Saga</a>,
-    <a href="https://react.semantic-ui.com/">Semantic UI</a>, and
+    <a href="https://material-ui.com/">Material UI</a>, and
     <a href="https://babeljs.io/">Babel</a>
     <br />
     <strong>API</strong>
     <br />
     <a href="https://feathersjs.com/">FeathersJS</a>,
-    <a href="https://mongoosejs.com/">Mongoose</a>, 
-    <a href="https://socket.io/">Socket.IO</a>,
+    <a href="https://mongoosejs.com/">Mongoose</a>,
     <a href="https://nodemon.io/">Nodemon</a>,
     <a href="https://expressjs.com/">Express</a>, and
     <a href="https://github.com/winstonjs/winston">Winston</a>
@@ -36,7 +35,7 @@
     <strong>Tooling</strong>
     <br />
     <a href="https://www.typescriptlang.org/">Typescript</a>,
-    <a href="https://palantir.github.io/tslint/">TSLint (Airbnb)</a>,
+    <a href="https://palantir.github.io/tslint/">TSLint (Based on Airbnb)</a>,
     <a href="https://prettier.io/">Prettier</a>,
     <a href="https://lernajs.io/">Lerna</a>,
     <a href="https://github.com/commitizen/cz-cli">Commitizen</a>, and
@@ -95,6 +94,22 @@ yarn start
 ```
 
 To learn more about Feathers, visit [feathersjs.com](http://feathersjs.com) or jump right into [the Feathers docs](http://docs.feathersjs.com).
+
+## Project Structure
+
+_Further design decisions/walkthrough of project structure is under coming soon..._
+
+## Design Decisions
+
+A few points about the cool consequences of decisions made in the design of this project:
+
+**Shared Types**: Since Typescript is used on the frontend and backend, types are shared across applications via the `@lieuu/core` module. This means that the contract remains strongly typed and consistent between the API and consumers.
+
+**REST Endpoints**: The API uses FeathersJS as its backbone - this enables a user to write minimal code to wire Express to make RESTful endpoints - simply add a model, define a new FeathersJS service, and it handles the creation of CRUD operations on that resource. This greatly reduces boilerplate code that needs to be maintained.
+
+**NextJS**: The frontend is based upon NextJS, which includes a lot of opinion by default. This again reduces the amount of boilerplate code which needs to be maintained - Webpack configuration is minimal, development/building/deployment is easy, and documentation is great.
+
+**Automated Tests**: The end-to-end tests using Cypress are easy to modify and automatically run against each deployment to ZEIT Now. A comment is left on a PR with a link to the deployment, and the build will fail if the deployment does not pass end-to-end tests. This means significantly less maintenance of a single "staging" environment, but `n` number of "staging" environments with automated tests to reduce QA overhead.
 
 ## License
 
