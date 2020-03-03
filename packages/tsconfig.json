@@ -1,9 +1,4 @@
 {
   "files": [],
-  "references": [
-    { "path": "api" },
-    { "path": "core" },
-    { "path": "ml" },
-    { "path": "web" }
-  ]
+  "references": [{ "path": "api" }, { "path": "core" }, { "path": "web" }]
 }

@@ -76,7 +76,7 @@ This will use [lerna](https://github.com/lerna/lerna) to start each service in t
 Also, one can start the web app individually by running:
 
 ```bash
-cd web/
+cd packages/web/
 yarn install
 yarn start
 ```
@@ -88,7 +88,7 @@ The web interface is built on NextJS. To learn more about it, visit [nextjs.org]
 Similarly, start the API individually by running:
 
 ```bash
-cd api/
+cd packages/api/
 yarn install
 yarn start
 ```
