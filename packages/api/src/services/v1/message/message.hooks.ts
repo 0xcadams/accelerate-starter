@@ -1,12 +1,11 @@
 import { hooks as authHooks } from '@feathersjs/authentication';
 import { disallow } from 'feathers-hooks-common';
-import { addUserInfo } from './hooks/add-user-info';
 
 const hooks = {
   before: {
     all: [authHooks.authenticate('jwt')],
-    create: [addUserInfo()],
-    find: [disallow()],
+    create: [],
+    find: [],
     get: [disallow()],
     patch: [disallow()],
     remove: [disallow()],

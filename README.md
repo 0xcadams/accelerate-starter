@@ -99,6 +99,20 @@ To learn more about Feathers, visit [feathersjs.com](http://feathersjs.com) or j
 
 _Further design decisions/walkthrough of project structure is under coming soon..._
 
+```bash
+now secret add accelerate-starter-stage\n_authentication-secret "mongodb+srv://api-user:TIvcIXu2vHgpcAtK@stage-msh0f.gcp.mongodb.net/accelerate-starter?retryWrites=true&w=majority"
+now secret add accelerate-starter-stage_authentication-secret "mongodb+srv://api-user:TIvcIXu2vHgpcAtK@stage-msh0f.gcp.mongodb.net/accelerate-starter?retryWrites=true&w=majority"
+now secret add accelerate-starter-stage_mongodb-url "mongodb+srv://api-user:TIvcIXu2vHgpcAtK@stage-msh0f.gcp.mongodb.net/accelerate-starter?retryWrites=true&w=majority"
+now secret remove accelerate-starter-stage_authentication-secret
+now secret add accelerate-starter-stage_authentication-secret "kqpeuw9smcgakzhur62mxi9sm2hcj"
+now secret add accelerate-starter-stage_sendgrid-api-key "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"
+
+now dns add accelerate-starter.com '@' MX mx1.forwardemail.net 10
+now dns add accelerate-starter.com '@' MX mx2.forwardemail.net 20
+now dns add accelerate-starter.com '@' TXT forward-email=c@cadams.io
+now dns add accelerate-starter.com '@' TXT "v=spf1 a mx include:spf.forwardemail.net -all"
+```
+
 ## Design Decisions
 
 A few points about the cool consequences of decisions made in the design of this project:

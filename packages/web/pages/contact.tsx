@@ -97,9 +97,8 @@ const ContactUsPage: React.FC<IProps> = ({
             ) : (
               <>
                 <Typography gutterBottom variant="body1">
-                  Reach out to us about our Enterprise offerings, data
-                  licensing, or any other requests. For bugs or issues found
-                  with the site, please go to the{' '}
+                  Reach out to us about anything. For bugs or issues found with
+                  the site, please go to the{' '}
                   <Link href="/support">support page</Link>.
                 </Typography>
                 <TextField

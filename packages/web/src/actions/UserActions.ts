@@ -14,12 +14,6 @@ export interface IModal {
 export const toggleAuthModal = createAction('auth/TOGGLE_MODAL')<IModal>();
 
 /*
- * TOGGLE DARK MODE
- */
-
-export const toggleDarkMode = createAction('auth/TOGGLE_DARK_MODE')<boolean>();
-
-/*
  * CREATE/UPDATE USER
  */
 

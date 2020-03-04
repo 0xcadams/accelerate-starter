@@ -13,7 +13,10 @@ export const initGA = () => {
 
 export const logPageView = () => {
   if (window && window.location.pathname) {
-    if (process.env.NODE_ENV !== 'development') {
+    if (
+      process.env.NODE_ENV !== 'development' &&
+      process.env.GOOGLE_ANALYTICS_ID
+    ) {
       reactGa.set({ page: window.location.pathname });
       reactGa.pageview(window.location.pathname);
     } else {
@@ -30,7 +33,10 @@ export const logEvent = ({
   action: string;
 }) => {
   if (category && action) {
-    if (process.env.NODE_ENV !== 'development') {
+    if (
+      process.env.NODE_ENV !== 'development' &&
+      process.env.GOOGLE_ANALYTICS_ID
+    ) {
       reactGa.event({ category, action });
     } else {
       console.log(`Logging event for category: ${category}, action: ${action}`);
@@ -40,7 +46,10 @@ export const logEvent = ({
 
 export const logException = (description, fatal = false) => {
   if (description) {
-    if (process.env.NODE_ENV !== 'development') {
+    if (
+      process.env.NODE_ENV !== 'development' &&
+      process.env.GOOGLE_ANALYTICS_ID
+    ) {
       reactGa.exception({ description, fatal });
     } else {
       console.log(`Logging exception for ${description}, fatal: ${fatal}`);
@@ -50,7 +59,10 @@ export const logException = (description, fatal = false) => {
 
 export const logUserId = (userId?: string) => {
   if (userId) {
-    if (process.env.NODE_ENV !== 'development') {
+    if (
+      process.env.NODE_ENV !== 'development' &&
+      process.env.GOOGLE_ANALYTICS_ID
+    ) {
       reactGa.set({ userId });
     } else {
       console.log(`Logging userId for ${userId}`);
@@ -89,7 +101,10 @@ export const logTimingEnd = ({
       performance.now() - (timings[`${service}-${method}`] || 0)
     );
 
-    if (process.env.NODE_ENV !== 'development') {
+    if (
+      process.env.NODE_ENV !== 'development' &&
+      process.env.GOOGLE_ANALYTICS_ID
+    ) {
       reactGa.timing({
         value: timeTook,
         label: method,

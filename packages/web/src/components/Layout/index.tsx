@@ -61,8 +61,10 @@ const getTitle = (pathname: string) => {
       return 'Terms of Use';
     case '/verify':
       return 'Verify';
-    default:
+    case '/':
       return 'Home';
+    default:
+      return 'By Valure';
   }
 };
 
@@ -84,7 +86,7 @@ const Layout: React.FC<IProps> = ({ children, isMobile }) => {
   }, []);
 
   const description =
-    'Change the way you research with micromarket analytics and investor-grade data on every neighborhood in the US.';
+    'An opinionated universal web app + API starter kit to facilitate rapid and scalable development using NextJS, FeathersJS, and MongoDB.';
 
   return (
     <>

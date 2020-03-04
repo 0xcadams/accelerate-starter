@@ -12,7 +12,6 @@ export interface IUserState {
   readonly error?: FeathersError | AxiosError | Error;
   readonly isFetching: boolean;
   readonly isModalShowing: 'signup' | 'login' | 'none';
-  readonly isDarkMode: boolean;
 
   readonly user?: IUser;
 }
@@ -21,7 +20,6 @@ export const initialUserState: IUserState = {
   error: undefined,
   isFetching: false,
   isModalShowing: 'none',
-  isDarkMode: true,
   user: undefined
 };
 
@@ -38,12 +36,6 @@ export const UserReducer = (
         ...state,
         error: action.payload.showModal ? undefined : state.error, // clear errors when the auth modal is being shown
         isModalShowing: action.payload.showModal
-      };
-
-    case getType(actions.toggleDarkMode):
-      return {
-        ...state,
-        isDarkMode: action.payload
       };
 
     case getType(actions.createUser.request):

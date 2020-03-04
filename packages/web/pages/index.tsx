@@ -1,13 +1,20 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { createStyles, Theme, WithStyles, withStyles } from '@material-ui/core';
+import {
+  createStyles,
+  Theme,
+  WithStyles,
+  withStyles,
+  Button,
+  Typography
+} from '@material-ui/core';
 
-import * as UserActions from '@actions/UserActions';
+import { createMessage, getMessages } from '@actions/MessageActions';
 
 import Loading from '@components/Loading';
 
-import { IStore, IUserState } from '@reducers';
+import { IStore, IMessageState, IUserState } from '@reducers';
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -22,21 +29,69 @@ const styles = (theme: Theme) =>
     }
   });
 
+interface IStateProps {
+  user: IUserState;
+  message: IMessageState;
+}
+
 const mapDispatchToProps = {
-  toggleAuthModal: UserActions.toggleAuthModal
+  createMessage: createMessage.request,
+  getMessages: getMessages.request
 };
 
 type IProps = WithStyles<typeof styles> &
-  IUserState &
+  IStateProps &
   typeof mapDispatchToProps & { pageContext: { isMobile: boolean } };
 
-const HomePage: React.FC<IProps> = ({ classes, isFetching }) => {
+const HomePage: React.FC<IProps> = ({
+  classes,
+  message,
+  user,
+  createMessage,
+  getMessages
+}) => {
   return (
     <>
-      {isFetching ? (
+      {user.isFetching ? (
         <Loading />
+      ) : user.user ? (
+        <div className={classes.landingContainer}>
+          <Typography variant="h4">Messages</Typography>
+          {message.messages.map((message) => (
+            <Typography variant="body1">
+              {message.user.name}: {message.message}
+            </Typography>
+          ))}
+          <Button
+            color="primary"
+            variant="outlined"
+            disabled={message.isFetching}
+            onClick={() =>
+              user.user &&
+              createMessage({
+                user: user.user,
+                message: `My favorite number is ${Math.round(
+                  Math.random() * 1000
+                )}!`
+              })
+            }
+          >
+            Add Message
+          </Button>
+          <Button
+            variant="outlined"
+            disabled={message.isFetching}
+            onClick={() => user.user && getMessages()}
+          >
+            Refresh Messages
+          </Button>
+        </div>
       ) : (
-        <div className={classes.landingContainer}>Hello!</div>
+        <div className={classes.landingContainer}>
+          <Typography variant="h6">
+            You must log in to test Accelerate!
+          </Typography>
+        </div>
       )}
     </>
   );
@@ -44,7 +99,10 @@ const HomePage: React.FC<IProps> = ({ classes, isFetching }) => {
 
 export default withStyles(styles)(
   connect(
-    (state: IStore): IUserState => state.user,
+    (state: IStore): IStateProps => ({
+      message: state.message,
+      user: state.user
+    }),
     mapDispatchToProps
   )(HomePage)
 );

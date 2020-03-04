@@ -14,8 +14,7 @@ context('Actions', () => {
 
   it('log in using modal and log out', () => {
     cy.fixture('test-user').then((json) => {
-      const { email } = json;
-      const password = Cypress.env('TEST_USER_PASS');
+      const { email, password } = json;
 
       // log in
 

@@ -8,6 +8,7 @@ import {
   takeLatest
 } from 'redux-saga/effects';
 
+import * as MessageActions from '@actions/MessageActions';
 import * as SnackbarActions from '@actions/SnackbarActions';
 import * as UserActions from '@actions/UserActions';
 import * as api from '@api';
@@ -63,6 +64,8 @@ export function* authenticateUser(user?: IUser) {
     const response = yield call(api.authenticateUser, user);
     yield put(UserActions.authenticateUser.success(response));
     yield call(toggleAuthModal, { showModal: 'none' });
+
+    yield put(MessageActions.getMessages.request());
   } catch (error) {
     yield put(SnackbarActions.showSnackbar(error));
     yield put(UserActions.authenticateUser.failure(error));

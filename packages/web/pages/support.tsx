@@ -98,11 +98,6 @@ const SupportPage: React.FC<IProps> = ({
               </Typography>
             ) : user ? (
               <>
-                <Typography gutterBottom variant="body1">
-                  We are available to help with all questions you may have.
-                  Please fill out the form below and we will respond within 48
-                  hours.
-                </Typography>
                 <TextField
                   id="support-issue"
                   label="What issue(s) are you facing?"

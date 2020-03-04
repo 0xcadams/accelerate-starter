@@ -17,7 +17,7 @@ export default (initialState: IStore) => {
   const persistConfig = {
     storage,
     key: reduxPersistKey,
-    whitelist: ['filter']
+    whitelist: []
   };
 
   const persistedReducer = persistReducer(persistConfig, rootReducer);

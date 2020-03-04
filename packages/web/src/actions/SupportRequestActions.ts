@@ -4,7 +4,7 @@ import { createAsyncAction } from 'typesafe-actions';
 import { ISupportRequest } from '@accelerate-starter/core';
 
 /*
- * CREATE/UPDATE USER
+ * CREATE SUPPORT REQUEST
  */
 
 export const createSupportRequest = createAsyncAction(

@@ -97,9 +97,7 @@ const ForgotPasswordPage: React.FC<typeof mapDispatchToProps &
         <Typography gutterBottom variant="h5">
           Reset your password
         </Typography>
-        <Typography gutterBottom>
-          No problem, we all forget every once and a while.
-        </Typography>
+        <Typography gutterBottom>It happens to the best of us.</Typography>
         <TextField
           error={Boolean(email.error || requestError)}
           id="auth-modal-email"

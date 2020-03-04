@@ -95,10 +95,7 @@ const NewPassphrasePage: React.FC<typeof mapDispatchToProps &
 
       <Paper className={classes.paper}>
         <Typography gutterBottom variant="h5">
-          Reset your password
-        </Typography>
-        <Typography gutterBottom>
-          No problem, we all forget every once and a while.
+          Set password
         </Typography>
         <TextField
           error={Boolean(password.error || requestError)}

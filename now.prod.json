@@ -12,7 +12,7 @@
   },
   "build": {
     "env": {
-      "GOOGLE_ANALYTICS_ID": "UA-116061410-1"
+      "GOOGLE_ANALYTICS_ID": ""
     }
   },
   "routes": [

@@ -12,8 +12,6 @@ import * as Sentry from '@sentry/node';
 
 import { config as globalConfig } from '@accelerate-starter/core';
 
-import { Application } from './declarations';
-
 import logger from './logger';
 
 import appHooks from './app.hooks';
@@ -26,11 +24,11 @@ import authentication from './authentication';
 import mongoose from './mongoose';
 
 Sentry.init({
-  dsn: 'https://407fdae4fbb14d939c798adb846eb49f@sentry.io/2690513',
-  release: `@accelerate-starter/api@${process.env.npm_package_version}`
+  dsn: process.env.SENTRY_DSN_API,
+  release: `@accelerate-starter/api`
 });
 
-const app: Application = express(feathers());
+const app = express(feathers());
 
 // The request handler must be the first middleware on the app
 app.use(Sentry.Handlers.requestHandler());

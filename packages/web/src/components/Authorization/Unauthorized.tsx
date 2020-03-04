@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import {
   createStyles,
-  
   Theme,
   Typography,
   WithStyles,
@@ -25,10 +24,7 @@ const styles = (theme: Theme) =>
 const Unauthorized: React.FC<WithStyles<typeof styles>> = ({ classes }) => (
   <div className={classes.container}>
     <Typography gutterBottom align="center" variant="h2">
-      Uh oh.
-    </Typography>
-    <Typography gutterBottom align="center" variant="h4">
-      Security told us you aren't allowed over here.
+      Unauthorized!
     </Typography>
     <Typography
       className={classes.description}

@@ -29,10 +29,7 @@ const ErrorComponent: React.FC<WithStyles<typeof styles>> = ({ classes }) => {
   return (
     <div className={classes.container}>
       <Typography gutterBottom align="center" variant="h2">
-        Uh oh.
-      </Typography>
-      <Typography gutterBottom align="center" variant="h4">
-        We probably broke something.
+        Error!
       </Typography>
       <Typography
         className={classes.description}

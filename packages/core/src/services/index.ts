@@ -1,10 +1,10 @@
 import { AuthenticationClient } from '@feathersjs/authentication-client';
 import { Service } from '@feathersjs/feathers';
-import { IReduxHistory, ISupportRequest, IUser } from '../models';
+import { IMessage, ISupportRequest, IUser } from '../models';
 
 export interface ServicePaths {
   authentication: AuthenticationClient;
-  'v1/redux-history': Service<IReduxHistory>;
+  'v1/message': Service<IMessage>;
   'v1/support-request': Service<ISupportRequest>;
   'v1/user': Service<IUser>;
 }
