@@ -6,7 +6,7 @@ context('Actions', () => {
       cy.request({
         method: 'POST',
         url: '/api/v1/user',
-        body: { ...json, password: Cypress.env('TEST_USER_PASS') },
+        body: { ...json },
         failOnStatusCode: false
       })
     );
