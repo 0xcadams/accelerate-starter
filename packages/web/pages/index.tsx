@@ -2,19 +2,19 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import {
+  Button,
   createStyles,
   Theme,
+  Typography,
   WithStyles,
-  withStyles,
-  Button,
-  Typography
+  withStyles
 } from '@material-ui/core';
 
 import { createMessage, getMessages } from '@actions/MessageActions';
 
 import Loading from '@components/Loading';
 
-import { IStore, IMessageState, IUserState } from '@reducers';
+import { IMessageState, IStore, IUserState } from '@reducers';
 
 const styles = (theme: Theme) =>
   createStyles({

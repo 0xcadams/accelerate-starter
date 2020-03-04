@@ -7,12 +7,12 @@ import axios from 'axios';
 import lodashMerge from 'lodash.merge';
 
 import {
+  IMessage,
   INewPasswordRequest,
   IPasswordResetRequest,
   ISupportRequest,
   IUser,
-  ServicePaths,
-  IMessage
+  ServicePaths
 } from '@accelerate-starter/core';
 
 import { reduxPersistKey } from '@redux/store';
