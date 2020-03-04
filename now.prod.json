@@ -8,6 +8,7 @@
     "MONGODB_URL": "@accelerate-starter-prod_mongodb-url",
     "NODE_ENV": "production",
     "SENDGRID_API_KEY": "@accelerate-starter-prod_sendgrid-api-key",
+    "SENTRY_DSN_API": "@accelerate-starter-prod_sentry-dsn-api",
     "SUPPORT_EMAIL": "support@accelerate-starter.com"
   },
   "build": {
