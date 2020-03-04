@@ -1,7 +1,7 @@
 // Application hooks that run for every service
-import { log } from './hooks/log';
+import log from './hooks/log';
 
-const hooks = {
+export default {
   before: {
     all: [log()],
     create: [],
@@ -32,5 +32,3 @@ const hooks = {
     update: []
   }
 };
-
-export { hooks };

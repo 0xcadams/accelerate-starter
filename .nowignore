@@ -7,4 +7,5 @@ docker-compose.yml
 .travis.yml
 greenkeeper.json
 .editorconfig
-*.md
+.git/
+dump/

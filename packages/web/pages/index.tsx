@@ -1,68 +1,108 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { Button, Grid, Header, Image, Segment } from 'semantic-ui-react';
-import { default as uuid } from 'uuid/v4';
+import {
+  Button,
+  createStyles,
+  Theme,
+  Typography,
+  WithStyles,
+  withStyles
+} from '@material-ui/core';
 
-import * as MessageActions from '@actions/MessageActions';
-import Messages from '@components/Messages';
+import { createMessage, getMessages } from '@actions/MessageActions';
 
-const mapDispatchToProps = {
-  createMessage: MessageActions.createMessage.request,
-  getMessages: MessageActions.getMessages.request
-};
+import Loading from '@components/Loading';
 
-export const HomePage: React.FC<typeof mapDispatchToProps> = ({
-  getMessages,
-  createMessage
-}) => {
-  React.useEffect(() => {
-    getMessages();
+import { IMessageState, IStore, IUserState } from '@reducers';
+
+const styles = (theme: Theme) =>
+  createStyles({
+    landingContainer: {
+      marginTop: theme.spacing(10),
+      marginBottom: theme.spacing(20),
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2),
+      maxWidth: theme.breakpoints.values.md
+    }
   });
 
+interface IStateProps {
+  user: IUserState;
+  message: IMessageState;
+}
+
+const mapDispatchToProps = {
+  createMessage: createMessage.request,
+  getMessages: getMessages.request
+};
+
+type IProps = WithStyles<typeof styles> &
+  IStateProps &
+  typeof mapDispatchToProps & { pageContext: { isMobile: boolean } };
+
+const HomePage: React.FC<IProps> = ({
+  classes,
+  message,
+  user,
+  createMessage,
+  getMessages
+}) => {
   return (
-    <Segment style={{ padding: '8em 0em' }} vertical>
-      <Grid container stackable verticalAlign="middle">
-        <Grid.Row>
-          <Grid.Column width={8}>
-            <Header as="h3" style={{ fontSize: '2em' }}>
-              Messages
-            </Header>
-            <Messages />
-          </Grid.Column>
-          <Grid.Column floated="right" width={4}>
-            <Image
-              alt="Accelerate Starter Logo"
-              rounded
-              size="large"
-              src={'/static/accelerate-starter.png'}
-            />
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column textAlign="center">
-            <Button
-              id="add-message-btn"
-              onClick={() => createMessage({ body: uuid() })}
-              size="huge"
-            >
-              Add a Message
-            </Button>
-            <Button
-              id="get-messages-btn"
-              onClick={() => getMessages()}
-              size="huge"
-            >
-              Get Messages
-            </Button>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
-    </Segment>
+    <>
+      {user.isFetching ? (
+        <Loading />
+      ) : user.user ? (
+        <div className={classes.landingContainer}>
+          <Typography variant="h4">Messages</Typography>
+          {message.messages.map((message) => (
+            <Typography variant="body1">
+              {message.user.name}: {message.message}
+            </Typography>
+          ))}
+          <Button
+            color="primary"
+            variant="outlined"
+            disabled={message.isFetching}
+            onClick={() =>
+              user.user &&
+              createMessage({
+                user: user.user,
+                message: `My favorite number is ${Math.round(
+                  Math.random() * 1000
+                )}!`
+              })
+            }
+          >
+            Add Message
+          </Button>
+          <Button
+            variant="outlined"
+            disabled={message.isFetching}
+            onClick={() => user.user && getMessages()}
+          >
+            Refresh Messages
+          </Button>
+        </div>
+      ) : (
+        <div className={classes.landingContainer}>
+          <Typography variant="h6">
+            You must log in to test Accelerate!
+          </Typography>
+        </div>
+      )}
+    </>
   );
 };
 
-export default connect(
-  () => ({}),
-  mapDispatchToProps
-)(HomePage);
+export default withStyles(styles)(
+  connect(
+    (state: IStore): IStateProps => ({
+      message: state.message,
+      user: state.user
+    }),
+    mapDispatchToProps
+  )(HomePage)
+);

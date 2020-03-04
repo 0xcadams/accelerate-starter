@@ -7,6 +7,9 @@
     "type": "git",
     "url": "https://github.com/chase-adams/accelerate-starter.git"
   },
+  "engines": {
+    "node": ">=12.x"
+  },
   "contributors": [
     "Chase Adams (https://cadams.io)"
   ],
@@ -18,7 +21,7 @@
     "now",
     "redux-saga",
     "redux",
-    "semantic-ui-react",
+    "material-ui",
     "typescript"
   ],
   "bugs": {
@@ -26,38 +29,48 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "lerna run build --stream",
-    "commit": "git-cz",
+    "build": "yarn build:core && lerna run build --stream",
+    "build:core": "lerna run build --stream --scope @accelerate-starter/core",
+    "clean": "lerna clean",
+    "commit": "npx git-cz",
     "fix": "lerna run lint --stream -- --fix",
-    "lh": "lighthousebot",
     "lint": "lerna run lint --stream",
-    "postinstall": "lerna run build --scope @accelerate-starter/core",
+    "postinstall": "yarn build:core",
     "release": "lerna version --conventional-commits --github-release --yes",
     "start": "lerna run start --stream",
+    "start:now": "now dev",
     "test:integration": "lerna run test:integration --stream",
     "test:integration:open": "lerna run test:integration:open --stream",
     "test": "lerna run test --stream"
   },
+  "dependencies": {
+    "mongoose": "^5.7.7"
+  },
   "devDependencies": {
-    "@commitlint/cli": "^7.5.2",
-    "@commitlint/config-conventional": "^7.5.0",
-    "@feathersjs/feathers": "^3.3.1",
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
     "@types/chai": "^4.1.7",
-    "@types/mocha": "^5.2.6",
+    "@types/dotenv": "^6.1.1",
+    "@types/mocha": "^7.0.1",
+    "@types/mongoose": "^5.5.28",
+    "@types/node": "^13.1.0",
+    "@types/uuid": "^3.4.5",
     "chai": "^4.2.0",
-    "cz-conventional-changelog": "2.1.0",
-    "husky": "^1.3.1",
-    "lerna": "3.13.1",
-    "lighthousebot": "https://github.com/GoogleChromeLabs/lighthousebot",
+    "cross-env": "^6.0.3",
+    "cz-conventional-changelog": "3.1.0",
+    "dotenv": "^8.2.0",
+    "husky": "3.1.0",
+    "lerna": "3.20.0",
     "mocha": "^6.0.2",
-    "nodemon": "^1.18.10",
-    "now": "^15.0.0",
-    "ts-node": "^8.0.2",
-    "tslint": "^5.14.0",
+    "nodemon": "^2.0.0",
+    "now": "^17.0.3",
+    "ts-node": "^8.4.1",
+    "tslint": "^5.20.1",
     "tslint-config-airbnb": "^5.11.1",
     "tslint-config-prettier": "^1.18.0",
-    "tslint-react-hooks": "^2.0.0",
-    "typescript": "^3.3.4000"
+    "tslint-react-hooks": "^2.2.1",
+    "typescript": "^3.7.4",
+    "uuid": "^3.3.3"
   },
   "workspaces": [
     "packages/*"
@@ -65,7 +78,7 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-push": "yarn test"
+      "pre-push": "yarn lint"
     }
   },
   "config": {

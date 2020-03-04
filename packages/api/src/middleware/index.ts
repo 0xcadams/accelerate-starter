@@ -1,6 +1,3 @@
-const middleware = () => {
-  // Add your custom middleware here. Remember that
-  // in Express, the order matters.
-};
+import { Application } from '../declarations';
 
-export { middleware };
+export default (_app: Application) => {};

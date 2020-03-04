@@ -1,0 +1,30 @@
+name: prod-deploy-and-integration-test
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: deploy to production
+        run: |
+          yarn install
+          ./node_modules/.bin/now --confirm -A now.prod.json -t $NOW_TOKEN --prod
+          export CYPRESS_BASE_URL=https://accelerate-starter.com
+          yarn test:integration
+
+        env:
+          NOW_TOKEN: ${{ secrets.NOW_TOKEN }}

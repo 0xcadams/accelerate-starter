@@ -7,10 +7,10 @@
   "rules": {
     "max-line-length": { "options": [120] },
     "member-ordering": [true, { "order": "fields-first" }],
-    "no-bitwise": true,
-    "only-arrow-functions": true,
-    "no-var-requires": true,
     "no-any": true,
+    "no-bitwise": true,
+    "no-var-requires": true,
+    "only-arrow-functions": true,
     "ordered-imports": true,
     "prefer-for-of": true,
     "promise-function-async": true,

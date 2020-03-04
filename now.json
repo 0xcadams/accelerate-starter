@@ -1,11 +1,20 @@
 {
   "version": 2,
-  "name": "accelerate-starter",
-  "alias": ["accelerate-starter.com"],
+  "scope": "accelerate-starter",
   "env": {
-    "MONGODB_URL": "@mongodb-url-prod",
-    "AUTH_SECRET": "@authentication-secret-prod",
-    "JWT_AUDIENCE": "https://accelerate-starter.com"
+    "FEATHERS_AUTH_SECRET": "@accelerate-starter-stage_authentication-secret",
+    "JWT_AUDIENCE": "https://accelerate-starter.now.sh",
+    "MONGODB_URL": "@accelerate-starter-stage_mongodb-url",
+    "NODE_ENV": "production",
+    "SENDGRID_API_KEY": "@accelerate-starter-stage_sendgrid-api-key",
+    "SENTRY_DSN_API": "@accelerate-starter-stage_sentry-dsn-api",
+    "SUPPORT_EMAIL": "support@accelerate-starter.com"
+  },
+  "build": {
+    "env": {
+      "GOOGLE_ANALYTICS_ID": "",
+      "SENTRY_DSN_WEB": "@accelerate-starter-stage_sentry-dsn-web"
+    }
   },
   "routes": [
     {
@@ -25,18 +34,31 @@
       }
     },
     {
+      "src": "/(_next/static/.*)",
+      "dest": "/packages/web/$1",
+      "headers": {
+        "cache-control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
       "src": "/(.*)",
       "dest": "/packages/web/$1",
       "headers": {
-        "cache-control": "public, max-age=43200, immutable"
+        "cache-control": "no-cache"
       }
     }
   ],
   "builds": [
     {
       "src": "packages/api/src/app.ts",
-      "use": "@now/node"
+      "use": "@now/node",
+      "config": {
+        "includeFiles": ["packages/api/src/emails/**"]
+      }
     },
-    { "src": "packages/web/next.config.js", "use": "@now/next" }
+    {
+      "src": "packages/web/next.config.js",
+      "use": "@now/next"
+    }
   ]
 }

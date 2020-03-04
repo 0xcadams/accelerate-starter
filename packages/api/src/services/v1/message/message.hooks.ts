@@ -1,20 +1,19 @@
 import { hooks as authHooks } from '@feathersjs/authentication';
-import { populateUser } from './hooks/populate-user';
-import { setUser } from './hooks/set-user';
+import { disallow } from 'feathers-hooks-common';
 
 const hooks = {
   before: {
     all: [authHooks.authenticate('jwt')],
-    create: [setUser()],
+    create: [],
     find: [],
-    get: [],
-    patch: [],
-    remove: [],
-    update: []
+    get: [disallow()],
+    patch: [disallow()],
+    remove: [disallow()],
+    update: [disallow()]
   },
 
   after: {
-    all: [populateUser()],
+    all: [],
     create: [],
     find: [],
     get: [],

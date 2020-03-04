@@ -1,10 +1,10 @@
 <div align="center">
-  <img src="packages/web/static/accelerate-starter.png" width="200" title="Accelerate Starter">
+  <img src="packages/web/public/accelerate-starter.png" width="200" title="Accelerate Starter">
   <h3>
     An opinionated universal web app + API starter kit to facilitate rapid and scalable development using NextJS, FeathersJS, and MongoDB.
   </h3>
   <div>
-    Accelerate is a starter project to enable a team to quickly jump past common hurdles such as user authentication, unit and integration tests, CI/CD, and tooling to begin solving their core business problems.
+    Accelerate is a starter project to enable a team to quickly jump past common hurdles such as user authentication, password resets, unit and integration tests, CI/CD, and tooling to begin solving their core business problems.
   </div>
   <h2></h2>
   <div>
@@ -14,14 +14,13 @@
     <a href="https://reactjs.org/">React</a>,
     <a href="https://react-redux.js.org/">React Redux</a>,
     <a href="https://redux-saga.js.org/">Redux Saga</a>,
-    <a href="https://react.semantic-ui.com/">Semantic UI</a>, and
+    <a href="https://material-ui.com/">Material UI</a>, and
     <a href="https://babeljs.io/">Babel</a>
     <br />
     <strong>API</strong>
     <br />
     <a href="https://feathersjs.com/">FeathersJS</a>,
-    <a href="https://mongoosejs.com/">Mongoose</a>, 
-    <a href="https://socket.io/">Socket.IO</a>,
+    <a href="https://mongoosejs.com/">Mongoose</a>,
     <a href="https://nodemon.io/">Nodemon</a>,
     <a href="https://expressjs.com/">Express</a>, and
     <a href="https://github.com/winstonjs/winston">Winston</a>
@@ -31,13 +30,12 @@
     <a href="https://www.cypress.io/">Cypress</a>,
     <a href="https://mochajs.org/">Mocha</a>,
     <a href="https://airbnb.io/enzyme/">Enzyme</a>,
-    <a href="https://www.chaijs.com/">Chai</a>, and
-    <a href="https://github.com/GoogleChromeLabs/lighthousebot">Lighthousebot</a>.
+    <a href="https://www.chaijs.com/">Chai</a>.
     <br />
     <strong>Tooling</strong>
     <br />
     <a href="https://www.typescriptlang.org/">Typescript</a>,
-    <a href="https://palantir.github.io/tslint/">TSLint (Airbnb)</a>,
+    <a href="https://palantir.github.io/tslint/">TSLint (Based on Airbnb)</a>,
     <a href="https://prettier.io/">Prettier</a>,
     <a href="https://lernajs.io/">Lerna</a>,
     <a href="https://github.com/commitizen/cz-cli">Commitizen</a>, and
@@ -50,11 +48,8 @@
 
   <br />
 
-[![Build Status](https://travis-ci.com/chase-adams/accelerate-starter.svg?branch=master)](https://travis-ci.com/chase-adams/accelerate-starter)
-[![Dev Dependencies Status](https://david-dm.org/chase-adams/accelerate-starter/dev-status.svg)](https://david-dm.org/chase-adams/accelerate-starter)
 [![Uptime Robot](https://img.shields.io/uptimerobot/ratio/m782175114-036d055bce99279de3d423f5.svg)](https://stats.uptimerobot.com/49G0WUOLW)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-[![Greenkeeper badge](https://badges.greenkeeper.io/chase-adams/accelerate-starter.svg)](https://greenkeeper.io/)
 [![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://lbesson.mit-license.org/)
 
 </div>
@@ -81,7 +76,7 @@ This will use [lerna](https://github.com/lerna/lerna) to start each service in t
 Also, one can start the web app individually by running:
 
 ```bash
-cd web/
+cd packages/web/
 yarn install
 yarn start
 ```
@@ -93,12 +88,42 @@ The web interface is built on NextJS. To learn more about it, visit [nextjs.org]
 Similarly, start the API individually by running:
 
 ```bash
-cd api/
+cd packages/api/
 yarn install
 yarn start
 ```
 
 To learn more about Feathers, visit [feathersjs.com](http://feathersjs.com) or jump right into [the Feathers docs](http://docs.feathersjs.com).
+
+## Project Structure
+
+_Further design decisions/walkthrough of project structure is under coming soon..._
+
+```bash
+now secret add accelerate-starter-stage\n_authentication-secret "mongodb+srv://api-user:TIvcIXu2vHgpcAtK@stage-msh0f.gcp.mongodb.net/accelerate-starter?retryWrites=true&w=majority"
+now secret add accelerate-starter-stage_authentication-secret "mongodb+srv://api-user:TIvcIXu2vHgpcAtK@stage-msh0f.gcp.mongodb.net/accelerate-starter?retryWrites=true&w=majority"
+now secret add accelerate-starter-stage_mongodb-url "mongodb+srv://api-user:TIvcIXu2vHgpcAtK@stage-msh0f.gcp.mongodb.net/accelerate-starter?retryWrites=true&w=majority"
+now secret remove accelerate-starter-stage_authentication-secret
+now secret add accelerate-starter-stage_authentication-secret "kqpeuw9smcgakzhur62mxi9sm2hcj"
+now secret add accelerate-starter-stage_sendgrid-api-key "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"
+
+now dns add accelerate-starter.com '@' MX mx1.forwardemail.net 10
+now dns add accelerate-starter.com '@' MX mx2.forwardemail.net 20
+now dns add accelerate-starter.com '@' TXT forward-email=c@cadams.io
+now dns add accelerate-starter.com '@' TXT "v=spf1 a mx include:spf.forwardemail.net -all"
+```
+
+## Design Decisions
+
+A few points about the cool consequences of decisions made in the design of this project:
+
+**Shared Types**: Since Typescript is used on the frontend and backend, types are shared across applications via the `@lieuu/core` module. This means that the contract remains strongly typed and consistent between the API and consumers.
+
+**REST Endpoints**: The API uses FeathersJS as its backbone - this enables a user to write minimal code to wire Express to make RESTful endpoints - simply add a model, define a new FeathersJS service, and it handles the creation of CRUD operations on that resource. This greatly reduces boilerplate code that needs to be maintained.
+
+**NextJS**: The frontend is based upon NextJS, which includes a lot of opinion by default. This again reduces the amount of boilerplate code which needs to be maintained - Webpack configuration is minimal, development/building/deployment is easy, and documentation is great.
+
+**Automated Tests**: The end-to-end tests using Cypress are easy to modify and automatically run against each deployment to ZEIT Now. A comment is left on a PR with a link to the deployment, and the build will fail if the deployment does not pass end-to-end tests. This means significantly less maintenance of a single "staging" environment, but `n` number of "staging" environments with automated tests to reduce QA overhead.
 
 ## License
 

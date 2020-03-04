@@ -17,6 +17,9 @@ lib-cov
 # Coverage directory used by tools like istanbul
 coverage
 
+# python virtual environment
+venv/
+
 # nyc test coverage
 .nyc_output
 
@@ -51,10 +54,13 @@ jspm_packages/
 
 # dotenv environment variables file
 .env
+.env.build
 
 # next.js build output
 .next
 
+# now build output
+.now
 
 # IDEs and editors (shamelessly copied from @angular/cli's .gitignore)
 /.idea
@@ -95,6 +101,8 @@ jspm_packages/
 # Icon must end with two \r
 Icon
 
+# Typescript Output
+tsconfig.tsbuildinfo
 
 # Thumbnails
 ._*
@@ -142,3 +150,9 @@ $RECYCLE.BIN/
 
 # ts output
 lib
+
+# mongodb dump
+dump/
+
+# log output
+*.out

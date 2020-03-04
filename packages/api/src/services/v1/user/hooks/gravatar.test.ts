@@ -26,15 +26,15 @@ describe("'gravatar' hook", () => {
 
   it('creates a gravatar link from the users email', async () => {
     const userBody: IUser = {
-      email: 'test@example.com',
+      email: 'c@cadams.io',
       password: 'test123'
     };
 
     const user = await app.service('user').create(userBody);
 
-    expect(user.email).to.eq('test@example.com');
+    expect(user.email).to.eq('c@cadams.io');
     expect(user.avatar).to.contain(
-      'https://s.gravatar.com/avatar/55502f40dc8b7c769880b10874abc9d0'
+      'https://s.gravatar.com/avatar/cc7b4c63db1fe4cfaa69ee60dea689e8'
     );
   });
 });

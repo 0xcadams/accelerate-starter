@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    link(href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet")
+    style
+      include style.css
+
+  body
+    div(class="spacer")
+    div(class="content")
+      div(class="logo")
+        a(href=origin)
+          img(alt="Logo" class="logo-image" src=logoSrc)
+      h1 Hi, #{name}!
+      p To complete email verification for Accelerate, please confirm your address below:
+      a(href=href class="action-button") Confirm Email
+      p Thanks,
+      p The Accelerate Team
+
+      hr
+      div(class="footer")
+        p Sent with ♥ from Valure
+        p Valure, LLC, 6432 East Parkview Drive, Scottsdale, AZ 85257
+    div(class="spacer")

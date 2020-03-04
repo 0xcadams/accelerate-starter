@@ -1,0 +1,11 @@
+{
+  "editor.tabSize": 2,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/build": true,
+    "**/.git": true,
+    "**/.idea": true,
+    "**/bower_components": true
+  },
+  "editor.formatOnSave": true
+}

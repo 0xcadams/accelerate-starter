@@ -1,37 +1,55 @@
-const express = require("express");
-const next = require("next");
-const path = require("path");
-const { devProxy } = require("./proxy.js");
+const express = require('express');
+const https = require('https');
+const next = require('next');
+const open = require('open');
+const path = require('path');
+const httpsLocalhost = require('https-localhost')();
 
-const PORT = process.env.PORT || 3000;
+const { devProxy } = require('./proxy');
+
+const PORT = process.env.PORT || 3443;
 
 const app = next({
-  dev: process.env.NODE_ENV !== "production"
+  dev: process.env.NODE_ENV !== 'production'
 });
 
-const routes = require("./routes");
-const handler = routes.getRequestHandler(app);
+const main = async () => {
+  await app.prepare();
 
-app.prepare().then(() => {
   const server = express();
 
   app.setAssetPrefix(process.env.STATIC_PATH);
 
-  server.use(express.static(path.join(__dirname, "../static")));
+  server.use(express.static(path.join(__dirname, '../static')));
 
-  if (process.env.PROXY_MODE === "local") {
-    const proxyMiddleware = require("http-proxy-middleware");
+  if (process.env.PROXY_MODE === 'local') {
+    const proxyMiddleware = require('http-proxy-middleware');
     Object.keys(devProxy).forEach((context) => {
       server.use(proxyMiddleware(context, devProxy[context]));
     });
   }
 
-  server.get("*", (req, res) => {
+  const handler = app.getRequestHandler();
+
+  server.get('*', (req, res) => {
     return handler(req, res);
   });
 
-  server.listen(PORT, err => {
-    if (err) throw err;
-    console.log(`> Ready on http://localhost:${PORT}`);
-  });
-});
+  const certs = await httpsLocalhost.getCerts();
+
+  await new Promise((resolve, reject) =>
+    https
+      .createServer(certs, server)
+      .listen(PORT, (err) => (err ? reject(err) : resolve()))
+  );
+
+  const localUrl = `https://localhost:${PORT}`;
+
+  console.log(`>>> Ready on ${localUrl}`);
+
+  await open(localUrl);
+};
+
+main()
+  .then(() => {})
+  .catch((e) => console.error(e));

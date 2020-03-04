@@ -1,9 +1,9 @@
 import { all, fork } from 'redux-saga/effects';
 
-import auth from './auth';
-import feathers from './feathers';
 import message from './message';
+import supportRequest from './supportRequest';
+import user from './user';
 
 export function* rootSaga() {
-  yield all([fork(auth), fork(feathers), fork(message)]);
+  yield all([fork(user), fork(message), fork(supportRequest)]);
 }

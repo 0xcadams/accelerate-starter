@@ -1,40 +1,26 @@
-import { Application } from '@feathersjs/express';
+import { Application } from './declarations';
 
-export const config = (app: Application<string>) => {
-  const isProd = process.env.NODE_ENV === 'production';
-
+export default (app: Application) => {
   const conf = {
+    paginate: false,
     authentication: {
-      cookie: {
-        enabled: true,
-        httpOnly: isProd,
-        name: 'accelerate-jwt',
-        secure: isProd
-      },
-      header: 'Authorization',
-      jwt: {
+      jwtOptions: {
         algorithm: 'HS256',
-        audience: process.env.JWT_AUDIENCE || 'http://localhost:3000',
-        expiresIn: '1d',
+        audience: process.env.JWT_AUDIENCE || 'https://localhost:3443',
+        expiresIn: '7d',
         header: { typ: 'access' },
-        issuer: 'feathers',
-        subject: 'anonymous'
+        issuer: 'feathers'
       },
       local: {
-        entity: 'user',
         passwordField: 'password',
         usernameField: 'email'
       },
       path: '/authentication',
-      secret: process.env.AUTH_SECRET || '1d14ef126b73c46e07f',
+      secret: process.env.FEATHERS_AUTH_SECRET || 'abc123',
+      entity: 'user',
       service: 'v1/user',
-      strategies: ['jwt', 'local']
-    },
-    mongodb: isProd
-      ? process.env.MONGODB_URL
-      : 'mongodb://localhost:27017/accelerate-starter',
-    paginate: { default: 10, max: 50 },
-    port: process.env.PORT || 3030
+      authStrategies: ['jwt', 'local']
+    }
   };
 
   Object.keys(conf).forEach((name) => {
