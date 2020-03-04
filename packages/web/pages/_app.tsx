@@ -21,9 +21,8 @@ import TopLoading from '@components/TopLoading';
 import store from '@redux/store';
 
 Sentry.init({
-  // Replace with your project's Sentry DSN
-  dsn: 'https://12af0999b82f4137b13eeead3474b304@sentry.io/2690481',
-  release: `@accelerate-starter/web@${process.env.npm_package_version}`
+  dsn: process.env.SENTRY_DSN_WEB,
+  release: `@accelerate-starter/web`
 });
 
 interface IProps extends React.Props<{}> {

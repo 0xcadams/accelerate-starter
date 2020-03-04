@@ -12,7 +12,8 @@
   },
   "build": {
     "env": {
-      "GOOGLE_ANALYTICS_ID": ""
+      "GOOGLE_ANALYTICS_ID": "",
+      "SENTRY_DSN_WEB": "@accelerate-starter-stage_sentry-dsn-web"
     }
   },
   "routes": [
